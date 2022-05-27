@@ -4,7 +4,7 @@
       <li>
         <NuxtLink to="/" activeClass="active">Home</NuxtLink>
       </li>
-      <li><NuxtLink to="/about" activeClass="active">About</NuxtLink></li>
+      <li><NuxtLink to="/about" activeClass="active">About what</NuxtLink></li>
     </ul>
   </div>
 </template>
