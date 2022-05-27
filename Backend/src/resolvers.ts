@@ -5,6 +5,7 @@ export const resolvers = {
     pcs: () => {
       return prisma.PC.findMany({
         include: {
+          network: true,
           house: true,
           room: true,
         },
@@ -22,6 +23,17 @@ export const resolvers = {
       return prisma.room.findMany({
         include: {
           house: true,
+          pcs: {
+            include: {
+              network: true,
+            },
+          },
+        },
+      });
+    },
+    networks: () => {
+      return prisma.network.findMany({
+        include: {
           pcs: true,
         },
       });

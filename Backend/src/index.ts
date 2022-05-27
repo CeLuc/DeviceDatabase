@@ -17,7 +17,7 @@ const startServer = async () => {
 
   apolloServer.applyMiddleware({
     app,
-    path: "/api",
+    path: "/graphql",
   });
 
   httpServer.listen({ port: process.env.PORT || 4000 }, () =>

@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,13 +8,15 @@ datasource db {
 }
 
 model PC {
-  id          String  @id @default(uuid())
-  hostname    String  @unique
-  staticip    Boolean @default(false)
-  house       House   @relation(fields: [housenumber], references: [number])
-  housenumber Int
-  room        Room    @relation(fields: [roomname], references: [name])
-  roomname    String
+  id        String  @id @default(uuid())
+  hostname  String  @unique
+  staticip  Boolean @default(false)
+  network   Network @relation(fields: [networkId], references: [id])
+  networkId String
+  house     House   @relation(fields: [houseId], references: [id])
+  houseId   String
+  room      Room    @relation(fields: [roomId], references: [id])
+  roomId    String
 }
 
 model House {
@@ -33,6 +32,10 @@ model Room {
   house   House  @relation(fields: [houseId], references: [id])
   houseId String
   pcs     PC[]
+}
 
-
+model Network {
+  id   String @id @default(uuid())
+  name String @unique
+  pcs  PC[]
 }
