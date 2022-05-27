@@ -5,7 +5,7 @@ import { DefaultApolloClient } from "@vue/apollo-composable";
 export default defineNuxtPlugin((nuxtApp) => {
   const apolloClient = new ApolloClient({
     cache: new InMemoryCache(),
-    uri: "http://localhost:4000/graphql",
+    uri: useRuntimeConfig().public.apiBase,
     // configuration //
   });
   nuxtApp.vueApp.provide(DefaultApolloClient, apolloClient);
