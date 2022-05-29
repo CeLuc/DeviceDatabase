@@ -20,8 +20,17 @@ const startServer = async () => {
     path: "/graphql",
   });
 
-  httpServer.listen({ port: process.env.PORT || 4000 }, () =>
-    console.log(`Server listening on localhost:4000${apolloServer.graphqlPath}`)
+  httpServer.listen(
+    {
+      port: process.env.BACKEND_PORT || 4000,
+      host: process.env.BACKEND_HOST || "localhost",
+    },
+    () =>
+      console.log(
+        `Server listening on ${process.env.BACKEND_HOST || "localhost"}:${
+          process.env.BACKEND_PORT || 4000
+        }${apolloServer.graphqlPath}`
+      )
   );
 };
 

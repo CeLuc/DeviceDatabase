@@ -3,9 +3,20 @@ import { gql } from "apollo-server-express";
 export const typeDefs = gql`
   type Query {
     pcs: [PC]!
+    pc(id: ID, hostname: String): PC
     houses: [House]!
     rooms: [Room]!
     networks: [Network]!
+  }
+
+  type Mutation {
+    addPc(
+      hostname: String!
+      staticip: Boolean!
+      network: ID!
+      house: ID!
+      room: ID!
+    ): PC
   }
 
   type PC {
