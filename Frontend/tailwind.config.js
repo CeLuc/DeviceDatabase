@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode: "class",
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
@@ -7,26 +8,26 @@ module.exports = {
     "./nuxt.config.{js,ts}",
   ],
   theme: {
-    darkSelector: ".dark-mode",
+    // darkSelector: "dark-mode",
     extend: {},
   },
-  variants: {
-    backgroundColor: [
-      "dark",
-      "dark-hover",
-      "dark-group-hover",
-      "dark-even",
-      "dark-odd",
-      "hover",
-      "responsive",
-    ],
-    borderColor: [
-      "dark",
-      "dark-focus",
-      "dark-focus-within",
-      "hover",
-      "responsive",
-    ],
-    textColor: ["dark", "dark-hover", "dark-active", "hover", "responsive"],
-  },
+  // variants: {
+  //   backgroundColor: [
+  //     "dark",
+  //     "dark-hover",
+  //     "dark-group-hover",
+  //     "dark-even",
+  //     "dark-odd",
+  //     "hover",
+  //     "responsive",
+  //   ],
+  //   borderColor: [
+  //     "dark",
+  //     "dark-focus",
+  //     "dark-focus-within",
+  //     "hover",
+  //     "responsive",
+  //   ],
+  //   textColor: ["dark", "dark-hover", "dark-active", "hover", "responsive"],
+  // },
 };

@@ -1,10 +1,19 @@
 <script>
 import { useQuery } from "@vue/apollo-composable";
 import { GET_POSTS } from "@/api/queries";
+
+export default {
+  setup() {
+    const { result } = useQuery(GET_POSTS);
+    return {
+      result,
+    };
+  },
+};
 </script>
 
 <template>
-  <div>
+  <div class="prose">
     <Nav />
     <div>This is a DB</div>
     <table>
@@ -16,9 +25,9 @@ import { GET_POSTS } from "@/api/queries";
           <th>House</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td></td>
+      <tbody v-if="result">
+        <tr v-for="pc in result.pcs" :key="pc.hostname">
+          <td>{{ pc.hostname }}</td>
           <td></td>
           <td></td>
           <td></td>
