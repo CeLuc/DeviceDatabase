@@ -47,7 +47,7 @@
         </div>
       </form>
       <div class="flex ml-auto">
-        <a href="" class="flex flex-row items-center">
+        <NuxtLink to="/profile" class="flex flex-row items-center">
           <img
             src="https://pbs.twimg.com/profile_images/378800000298815220/b567757616f720812125bfbac395ff54_normal.png"
             alt=""
@@ -61,7 +61,7 @@
               >Admin</span
             >
           </span>
-        </a>
+        </NuxtLink>
       </div>
     </div>
   </header>
