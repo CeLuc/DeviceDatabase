@@ -1,5 +1,5 @@
 <template>
-  <header class="px-4 py-4 bg-white shadow header">
+  <header class="px-4 py-4 bg-white shadow dark:bg-black header">
     <div class="flex flex-row items-center header-content">
       <form action="#">
         <div class="relative hidden md:flex">
@@ -23,7 +23,7 @@
             id="search"
             type="text"
             name="search"
-            class="w-full h-10 pl-10 pr-4 text-sm placeholder-gray-500 border border-gray-300 rounded-lg sm:text-base focus:outline-none focus:border-indigo-400"
+            class="w-full h-10 pl-10 pr-4 text-sm placeholder-gray-500 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-900 sm:text-base focus:outline-none focus:border-gray-800"
             placeholder="Search..."
           />
         </div>
@@ -51,7 +51,7 @@
           <img
             src="https://pbs.twimg.com/profile_images/378800000298815220/b567757616f720812125bfbac395ff54_normal.png"
             alt=""
-            class="w-10 h-10 bg-gray-200 border rounded-full"
+            class="w-10 h-10 bg-gray-200 border rounded-full dark:border-primary"
           />
           <span class="flex flex-col ml-2">
             <span class="w-20 font-semibold leading-none tracking-wide truncate"
