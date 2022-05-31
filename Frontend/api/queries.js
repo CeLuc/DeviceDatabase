@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client/core";
 
-export const GET_POSTS = gql`
-  query get_posts {
+export const GET_PCS = gql`
+  query get_pcs {
     pcs {
       id
       hostname

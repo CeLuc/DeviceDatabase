@@ -1,9 +1,9 @@
 <script>
 import { useQuery } from "@vue/apollo-composable";
-import { GET_POSTS } from "@/api/queries";
+import { GET_PCS } from "@/api/queries";
 export default {
   setup() {
-    const { result } = useQuery(GET_POSTS);
+    const { result } = useQuery(GET_PCS);
     return { result };
   },
 };
@@ -14,9 +14,9 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="">
+  <div>
     <div>This is a DB</div>
-    <table class="table-color">
+    <table class="prose dark:prose-invert">
       <thead>
         <tr>
           <th>pc</th>
@@ -27,7 +27,7 @@ definePageMeta({
       </thead>
       <tbody v-if="result">
         <tr
-          class="odd:bg-white even:bg-slate-400"
+          class="odd:bg-white even:bg-slate-400 dark:odd:bg-[#303030] dark:even:bg-[#202020]"
           v-for="pc in result.pcs"
           :key="pc.hostname"
         >
