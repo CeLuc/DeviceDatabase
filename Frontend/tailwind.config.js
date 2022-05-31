@@ -19,6 +19,9 @@ module.exports = {
         primary: "#E10E4B",
         secondary: "#009581",
       },
+      fontFamily: {
+        comfortaa: ["Comfortaa", "cursive"],
+      },
     },
   },
 };

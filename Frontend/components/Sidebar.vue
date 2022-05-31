@@ -18,7 +18,7 @@
           </svg>
           <span
             class="ml-1 text-2xl font-bold leading-10 text-gray-100 uppercase"
-            >Se</span
+            >sanktelisabeth</span
           >
         </a>
       </div>
