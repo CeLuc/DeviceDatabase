@@ -5,8 +5,11 @@ export const typeDefs = gql`
     pcs: [PC]!
     pc(id: ID, hostname: String): PC
     houses: [House]!
+    house(id: ID, number: Int): House
     rooms: [Room]!
+    room(id: ID, name: String): Room
     networks: [Network]!
+    network(id: ID, name: String): Network
   }
 
   type Mutation {
