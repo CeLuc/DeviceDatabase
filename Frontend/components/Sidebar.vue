@@ -25,7 +25,7 @@
     </div>
     <div class="px-4 py-6 sidebar-content">
       <ul class="flex flex-col w-full">
-        <SingleListItem name="Dashboard" link="/">
+        <SidebarSingleLi name="Dashboard" link="/">
           <svg
             fill="none"
             stroke-linecap="round"
@@ -38,14 +38,14 @@
               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
             />
           </svg>
-        </SingleListItem>
+        </SidebarSingleLi>
         <li class="my-px">
           <span
             class="flex px-4 my-4 text-sm font-medium text-gray-300 uppercase"
             >Projects</span
           >
         </li>
-        <SingleListItem name="DB" link="/db">
+        <SidebarSingleLi name="DB" link="/db">
           <svg
             fill="none"
             stroke-linecap="round"
@@ -58,8 +58,8 @@
               d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
             />
           </svg>
-        </SingleListItem>
-        <SingleListItem name="Manager" link="/manager">
+        </SidebarSingleLi>
+        <SidebarSingleLi name="Manager" link="/manager">
           <svg
             fill="none"
             stroke-linecap="round"
@@ -72,8 +72,8 @@
               d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
             />
           </svg>
-        </SingleListItem>
-        <SingleListItem name="Tasks" link="/tasks">
+        </SidebarSingleLi>
+        <SidebarSingleLi name="Tasks" link="/tasks">
           <svg
             fill="none"
             stroke-linecap="round"
@@ -86,14 +86,14 @@
               d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
             />
           </svg>
-        </SingleListItem>
+        </SidebarSingleLi>
         <li class="my-px">
           <span
             class="flex px-4 my-4 text-sm font-medium text-gray-300 uppercase"
             >Account</span
           >
         </li>
-        <SingleListItem name="Profile" link="/profile">
+        <SidebarSingleLi name="Profile" link="/profile">
           <svg
             fill="none"
             stroke-linecap="round"
@@ -107,8 +107,8 @@
               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
             />
           </svg>
-        </SingleListItem>
-        <SingleListItem name="Settings" link="/settings">
+        </SidebarSingleLi>
+        <SidebarSingleLi name="Settings" link="/settings">
           <svg
             fill="none"
             stroke-linecap="round"
@@ -123,8 +123,8 @@
             />
             <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-        </SingleListItem>
-        <SingleListItem name="Logout" color="text-red-400" link="/logout">
+        </SidebarSingleLi>
+        <SidebarSingleLi name="Logout" color="text-red-400" link="/logout">
           <svg
             fill="none"
             stroke-linecap="round"
@@ -138,7 +138,7 @@
               d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
             />
           </svg>
-        </SingleListItem>
+        </SidebarSingleLi>
       </ul>
     </div>
   </aside>

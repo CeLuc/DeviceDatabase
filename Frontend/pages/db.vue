@@ -15,10 +15,10 @@ definePageMeta({
 
 <template>
   <div>
-    <div>This is a DB</div>
+    <div>Device Datenbank</div>
     <table class="prose dark:prose-invert">
       <thead>
-        <tr>
+        <tr class="text-lg">
           <th>pc</th>
           <th>room</th>
           <th>Network</th>
