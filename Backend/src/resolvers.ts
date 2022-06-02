@@ -48,7 +48,6 @@ export const resolvers = {
           pcs: {
             include: {
               network: true,
-              house: true,
               room: true,
             },
           },
@@ -57,11 +56,9 @@ export const resolvers = {
               pcs: {
                 include: {
                   network: true,
-                  house: true,
                   room: true,
                 },
               },
-              house: true,
             },
           },
         },
@@ -77,7 +74,6 @@ export const resolvers = {
           pcs: {
             include: {
               network: true,
-              house: parent,
               room: true,
             },
           },
@@ -86,11 +82,9 @@ export const resolvers = {
               pcs: {
                 include: {
                   network: true,
-                  house: parent,
                   room: true,
                 },
               },
-              house: parent,
             },
           },
         },
@@ -103,7 +97,6 @@ export const resolvers = {
             include: {
               network: true,
               house: true,
-              room: true,
             },
           },
           house: {
@@ -112,10 +105,8 @@ export const resolvers = {
                 include: {
                   network: true,
                   house: true,
-                  room: true,
                 },
               },
-              rooms: true,
             },
           },
         },
@@ -132,7 +123,6 @@ export const resolvers = {
             include: {
               network: true,
               house: true,
-              room: parent,
             },
           },
           house: {
@@ -141,7 +131,6 @@ export const resolvers = {
                 include: {
                   network: true,
                   house: true,
-                  room: parent,
                 },
               },
               rooms: true,
