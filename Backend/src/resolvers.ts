@@ -1,3 +1,5 @@
+import { transformDocument } from "@prisma/client/runtime";
+
 const { prisma } = require("./prisma/client");
 
 export const resolvers = {
@@ -11,24 +13,73 @@ export const resolvers = {
         },
       });
     },
-    pc: (parent: any, args: any) => {
+    pc: (parent: any, { id, hostname }: any) => {
       return prisma.PC.findUnique({
         where: {
-          id: args.id,
-          hostname: args.hostname,
+          id: id,
+          hostname: hostname,
         },
         include: {
           network: true,
-          house: true,
-          room: true,
+          house: {
+            include: {
+              rooms: true,
+            },
+          },
+          room: {
+            include: {
+              house: true,
+            },
+          },
         },
       });
     },
     houses: () => {
       return prisma.house.findMany({
         include: {
-          pcs: true,
-          rooms: true,
+          pcs: {
+            include: {
+              network: true,
+              house: true,
+              room: true,
+            },
+          },
+          rooms: {
+            pcs: {
+              include: {
+                network: true,
+                house: true,
+              },
+            },
+            house: true,
+          },
+        },
+      });
+    },
+    house: (parent: any, { id, number }: any) => {
+      return prisma.house.findUnique({
+        where: {
+          id: id,
+          number: number,
+        },
+        include: {
+          pcs: {
+            include: {
+              network: true,
+              house: parent,
+              room: true,
+            },
+          },
+          rooms: {
+            include: {
+              pcs: {
+                include: {
+                  network: true,
+                  house: parent,
+                },
+              },
+            },
+          },
         },
       });
     },
@@ -39,7 +90,28 @@ export const resolvers = {
           pcs: {
             include: {
               network: true,
+              house: true,
             },
+          },
+        },
+      });
+    },
+    room: (parent: any, { id, name }: any) => {
+      return prisma.room.findUnique({
+        where: {
+          id: id,
+          name: name,
+        },
+        include: {
+          pcs: {
+            include: {
+              network: true,
+              house: true,
+              room: parent,
+            },
+          },
+          house: {
+            rooms: true,
           },
         },
       });
@@ -48,6 +120,23 @@ export const resolvers = {
       return prisma.network.findMany({
         include: {
           pcs: true,
+        },
+      });
+    },
+    network: (parent: any, { id, name }: any) => {
+      return prisma.room.findUnique({
+        where: {
+          id: id,
+          name: name,
+        },
+        include: {
+          pcs: {
+            include: {
+              network: true,
+              house: true,
+              room: true,
+            },
+          },
         },
       });
     },
