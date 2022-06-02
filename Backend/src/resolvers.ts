@@ -8,8 +8,16 @@ export const resolvers = {
       return prisma.PC.findMany({
         include: {
           network: true,
-          house: true,
-          room: true,
+          house: {
+            include: {
+              rooms: true,
+            },
+          },
+          room: {
+            include: {
+              house: true,
+            },
+          },
         },
       });
     },
@@ -45,13 +53,16 @@ export const resolvers = {
             },
           },
           rooms: {
-            pcs: {
-              include: {
-                network: true,
-                house: true,
+            include: {
+              pcs: {
+                include: {
+                  network: true,
+                  house: true,
+                  room: true,
+                },
               },
+              house: true,
             },
-            house: true,
           },
         },
       });
@@ -76,8 +87,10 @@ export const resolvers = {
                 include: {
                   network: true,
                   house: parent,
+                  room: true,
                 },
               },
+              house: parent,
             },
           },
         },
@@ -86,11 +99,23 @@ export const resolvers = {
     rooms: () => {
       return prisma.room.findMany({
         include: {
-          house: true,
           pcs: {
             include: {
               network: true,
               house: true,
+              room: true,
+            },
+          },
+          house: {
+            include: {
+              pcs: {
+                include: {
+                  network: true,
+                  house: true,
+                  room: true,
+                },
+              },
+              rooms: true,
             },
           },
         },
@@ -111,7 +136,16 @@ export const resolvers = {
             },
           },
           house: {
-            rooms: true,
+            include: {
+              pcs: {
+                include: {
+                  network: true,
+                  house: true,
+                  room: parent,
+                },
+              },
+              rooms: true,
+            },
           },
         },
       });
@@ -119,7 +153,13 @@ export const resolvers = {
     networks: () => {
       return prisma.network.findMany({
         include: {
-          pcs: true,
+          pcs: {
+            include: {
+              network: true,
+              house: true,
+              room: true,
+            },
+          },
         },
       });
     },
