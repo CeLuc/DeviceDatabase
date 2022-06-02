@@ -54,16 +54,28 @@ export const resolvers = {
   },
 
   Mutation: {
-    addPc: async (_: any, args: any) => {
+    addPc: async (
+      _: any,
+      {
+        hostname,
+        staticip,
+        network,
+        networkId,
+        house,
+        houseId,
+        room,
+        roomId,
+      }: any
+    ) => {
       const pc = await prisma.PC.create({
         data: {
-          hostname: args.hostname,
-          staticip: args.staticip,
+          hostname: hostname,
+          staticip: staticip,
           network: {
-            connect: { id: args.network },
+            connect: { id: networkId, name: network },
           },
-          house: { connect: { id: args.house } },
-          room: { connect: { id: args.room } },
+          house: { connect: { id: houseId, number: house } },
+          room: { connect: { id: roomId, name: room } },
         },
         include: {
           network: true,
@@ -73,6 +85,40 @@ export const resolvers = {
       });
       if (pc) {
         return pc;
+      }
+    },
+    addNetwork: async (_: any, { name }: any) => {
+      const network = await prisma.Network.create({
+        data: {
+          name: name,
+        },
+      });
+      if (network) {
+        return network;
+      }
+    },
+    addHouse: async (_: any, { number }: any) => {
+      const house = await prisma.House.create({
+        data: {
+          number: number,
+        },
+      });
+      if (house) {
+        return house;
+      }
+    },
+    addRoom: async (_: any, { name, house, houseId }: any) => {
+      const room = await prisma.Room.create({
+        data: {
+          name: name,
+          house: { connect: { id: houseId, number: house } },
+        },
+        include: {
+          house: true,
+        },
+      });
+      if (room) {
+        return room;
       }
     },
   },
