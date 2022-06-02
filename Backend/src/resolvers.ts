@@ -1,3 +1,5 @@
+import { transformDocument } from "@prisma/client/runtime";
+
 const { prisma } = require("./prisma/client");
 
 export const resolvers = {
@@ -6,39 +8,132 @@ export const resolvers = {
       return prisma.PC.findMany({
         include: {
           network: true,
-          house: true,
-          room: true,
+          house: {
+            include: {
+              rooms: true,
+            },
+          },
+          room: {
+            include: {
+              house: true,
+            },
+          },
         },
       });
     },
-    pc: (parent: any, args: any) => {
+    pc: (parent: any, { id, hostname }: any) => {
       return prisma.PC.findUnique({
         where: {
-          id: args.id,
-          hostname: args.hostname,
+          id: id,
+          hostname: hostname,
         },
         include: {
           network: true,
-          house: true,
-          room: true,
+          house: {
+            include: {
+              rooms: true,
+            },
+          },
+          room: {
+            include: {
+              house: true,
+            },
+          },
         },
       });
     },
     houses: () => {
       return prisma.house.findMany({
         include: {
-          pcs: true,
-          rooms: true,
+          pcs: {
+            include: {
+              network: true,
+              room: true,
+            },
+          },
+          rooms: {
+            include: {
+              pcs: {
+                include: {
+                  network: true,
+                  room: true,
+                },
+              },
+            },
+          },
+        },
+      });
+    },
+    house: (parent: any, { id, number }: any) => {
+      return prisma.house.findUnique({
+        where: {
+          id: id,
+          number: number,
+        },
+        include: {
+          pcs: {
+            include: {
+              network: true,
+              room: true,
+            },
+          },
+          rooms: {
+            include: {
+              pcs: {
+                include: {
+                  network: true,
+                  room: true,
+                },
+              },
+            },
+          },
         },
       });
     },
     rooms: () => {
       return prisma.room.findMany({
         include: {
-          house: true,
           pcs: {
             include: {
               network: true,
+              house: true,
+            },
+          },
+          house: {
+            include: {
+              pcs: {
+                include: {
+                  network: true,
+                  house: true,
+                },
+              },
+            },
+          },
+        },
+      });
+    },
+    room: (parent: any, { id, name }: any) => {
+      return prisma.room.findUnique({
+        where: {
+          id: id,
+          name: name,
+        },
+        include: {
+          pcs: {
+            include: {
+              network: true,
+              house: true,
+            },
+          },
+          house: {
+            include: {
+              pcs: {
+                include: {
+                  network: true,
+                  house: true,
+                },
+              },
+              rooms: true,
             },
           },
         },
@@ -47,23 +142,58 @@ export const resolvers = {
     networks: () => {
       return prisma.network.findMany({
         include: {
-          pcs: true,
+          pcs: {
+            include: {
+              network: true,
+              house: true,
+              room: true,
+            },
+          },
+        },
+      });
+    },
+    network: (parent: any, { id, name }: any) => {
+      return prisma.room.findUnique({
+        where: {
+          id: id,
+          name: name,
+        },
+        include: {
+          pcs: {
+            include: {
+              network: true,
+              house: true,
+              room: true,
+            },
+          },
         },
       });
     },
   },
 
   Mutation: {
-    addPc: async (_: any, args: any) => {
+    addPc: async (
+      _: any,
+      {
+        hostname,
+        staticip,
+        network,
+        networkId,
+        house,
+        houseId,
+        room,
+        roomId,
+      }: any
+    ) => {
       const pc = await prisma.PC.create({
         data: {
-          hostname: args.hostname,
-          staticip: args.staticip,
+          hostname: hostname,
+          staticip: staticip,
           network: {
-            connect: { id: args.network },
+            connect: { id: networkId, name: network },
           },
-          house: { connect: { id: args.house } },
-          room: { connect: { id: args.room } },
+          house: { connect: { id: houseId, number: house } },
+          room: { connect: { id: roomId, name: room } },
         },
         include: {
           network: true,
@@ -73,6 +203,40 @@ export const resolvers = {
       });
       if (pc) {
         return pc;
+      }
+    },
+    addNetwork: async (_: any, { name }: any) => {
+      const network = await prisma.Network.create({
+        data: {
+          name: name,
+        },
+      });
+      if (network) {
+        return network;
+      }
+    },
+    addHouse: async (_: any, { number }: any) => {
+      const house = await prisma.House.create({
+        data: {
+          number: number,
+        },
+      });
+      if (house) {
+        return house;
+      }
+    },
+    addRoom: async (_: any, { name, house, houseId }: any) => {
+      const room = await prisma.Room.create({
+        data: {
+          name: name,
+          house: { connect: { id: houseId, number: house } },
+        },
+        include: {
+          house: true,
+        },
+      });
+      if (room) {
+        return room;
       }
     },
   },
