@@ -16,12 +16,15 @@ export const typeDefs = gql`
     addPc(
       hostname: String!
       staticip: Boolean!
-      network: ID!
-      house: ID!
-      room: ID!
+      network: String
+      networkId: ID
+      house: Int
+      houseId: ID
+      room: String
+      roomId: ID
     ): PC
     addHouse(number: Int!): House
-    addRoom(name: String!, house: ID!): Room
+    addRoom(name: String!, house: Int, houseId: ID): Room
     addNetwork(name: String!): Network
   }
 
