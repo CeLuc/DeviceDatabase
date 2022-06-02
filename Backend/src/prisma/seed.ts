@@ -11,10 +11,10 @@ async function main() {
   });
 
   const r1 = await prisma.Room.upsert({
-    where: { name: "RoomtEst1" },
+    where: { name: "testRoom1" },
     update: {},
     create: {
-      name: "RoomtEst1",
+      name: "testRoom1",
       house: {
         connect: {
           number: 1,
@@ -39,7 +39,7 @@ async function main() {
     update: {},
     create: {
       hostname: "A-BJE-P0094",
-      staticip: false,
+      staticip: true,
       network: {
         connect: {
           name: "FSE",
@@ -52,7 +52,7 @@ async function main() {
       },
       room: {
         connect: {
-          name: "RoomtEst1",
+          name: "testRoom1",
         },
       },
     },
@@ -80,7 +80,7 @@ async function main() {
       },
       room: {
         connect: {
-          name: "RoomtEst1",
+          name: "testRoom1",
         },
       },
     },
