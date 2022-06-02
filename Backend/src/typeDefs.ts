@@ -20,6 +20,9 @@ export const typeDefs = gql`
       house: ID!
       room: ID!
     ): PC
+    addHouse(number: Int!): House
+    addRoom(name: String!, house: ID!): Room
+    addNetwork(name: String!): Network
   }
 
   type PC {
