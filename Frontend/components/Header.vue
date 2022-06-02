@@ -1,3 +1,7 @@
+<script setup>
+const name = "hallo";
+</script>
+
 <template>
   <header class="px-4 py-4 bg-white shadow dark:bg-black header">
     <div class="flex flex-row items-center header-content">
@@ -19,13 +23,7 @@
             </svg>
           </div>
 
-          <input
-            id="search"
-            type="text"
-            name="search"
-            class="w-full h-10 pl-10 pr-4 text-sm placeholder-gray-500 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-900 sm:text-base focus:outline-none focus:border-gray-800"
-            placeholder="Search..."
-          />
+          <InputSearch />
         </div>
         <div class="flex md:hidden">
           <a
