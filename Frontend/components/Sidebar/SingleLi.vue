@@ -1,6 +1,5 @@
 <script setup>
 defineProps(["name", "color", "link"]);
-const defaultColor = "text-gray-400";
 </script>
 
 <template>
@@ -8,13 +7,13 @@ const defaultColor = "text-gray-400";
     <NuxtLink
       :to="{ path: link }"
       activeClass="text-gray-700 bg-gray-100"
-      class="flex flex-row items-center h-10 px-3 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+      class="flex flex-row items-center h-10 px-3 transition-all duration-200 rounded-lg hover:ease-in hover:bg-gray-100 hover:text-gray-700"
     >
       <span
         class="flex items-center justify-center text-lg"
-        :class="[color != null ? color : defaultColor]"
+        :class="[color != null ? color : 'text-gray-400']"
       >
-        <div class="w-6 h-6">
+        <div class="w-6 h-6 fill-current">
           <slot />
         </div>
       </span>
