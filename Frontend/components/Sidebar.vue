@@ -45,20 +45,54 @@
             >Projects</span
           >
         </li>
-        <SidebarSingleLi name="DB" link="/db">
-          <svg
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+        <SidebarDropdownMenuLi name="Tables">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path
-              d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+              d="M20 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2Zm0 2v3H5V5h15Zm-5 14h-5v-9h5v9ZM5 10h3v9H5v-9Zm12 9v-9h3v9h-3Z"
             />
           </svg>
-        </SidebarSingleLi>
+          <template #submenus>
+            <SidebarDropdownItemLi name="PCs" link="/db">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M4 7c0-.55.45-1 1-1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-1.1 0-2 .9-2 2v11h-.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5H14v-3H4V7Zm19 1h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1Zm-1 9h-4v-7h4v7Z"
+                ></path>
+              </svg>
+            </SidebarDropdownItemLi>
+            <SidebarDropdownItemLi name="Netzwerke" link="/db/networks">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <g><rect fill="none" height="24" width="24" /></g>
+                <g>
+                  <path
+                    d="M13,22h8v-7h-3v-4h-5V9h3V2H8v7h3v2H6v4H3v7h8v-7H8v-2h8v2h-3V22z M10,7V4h4v3H10z M9,17v3H5v-3H9z M19,17v3h-4v-3H19z"
+                  />
+                </g>
+              </svg>
+            </SidebarDropdownItemLi>
+            <SidebarDropdownItemLi name="Häuser" link="/db/houses">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="none" d="M0 0h24v24H0Z" />
+                <g>
+                  <path
+                    d="M17 15h2v2h-2Zm0-4h2v2h-2Zm0-4h2v2h-2Zm-3.26 0l1.26.84V7Z"
+                  />
+                  <path d="M10 3v1.51l2 1.33V5h9v14h-4v2h6V3Z" />
+                  <path
+                    d="M8.17 5.7L15 10.25V21H1V10.48L8.17 5.7ZM10 19h3v-7.84L8.17 8.09 3 11.38V19h3v-6h4v6Z"
+                  />
+                </g>
+              </svg>
+            </SidebarDropdownItemLi>
+            <SidebarDropdownItemLi name="Räume" link="/db/rooms">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="none" d="M0 0h24v24H0V0Z" />
+                <path
+                  d="M19 19V4h-4V3H5v16H3v2h12V6h2v15h4v-2h-2Zm-6 0H7V5h6v14Zm-3-8h2v2h-2Z"
+                />
+              </svg>
+            </SidebarDropdownItemLi>
+          </template>
+        </SidebarDropdownMenuLi>
         <SidebarSingleLi name="Manager" link="/manager">
           <svg
             fill="none"
