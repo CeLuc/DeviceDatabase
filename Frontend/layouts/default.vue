@@ -8,6 +8,7 @@
     >
       <Header />
       <div class="flex flex-col flex-grow p-4 main-content">
+        <Breadcrumbs />
         <slot />
       </div>
     </main>

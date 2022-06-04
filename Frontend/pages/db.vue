@@ -6,7 +6,8 @@ export default {
   setup() {
     const { result } = useQuery(GET_PCS);
     const { mutate: delPc } = useMutation(DEL_PC);
-    return { result, delPc };
+    const router = useRouter();
+    return { result, delPc, router };
   },
   methods: {
     copy(text) {
@@ -133,6 +134,3 @@ definePageMeta({
   @apply px-6 py-4 border-t border-gray-600/80;
 }
 </style>
-
-function definePageMeta(arg0: { layout: string; }) { throw new Error('Function
-not implemented.'); }
