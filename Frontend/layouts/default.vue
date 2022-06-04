@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-row min-h-screen text-gray-800 bg-gray-100 dark:bg-[#101010] dark:text-gray-100"
+    class="flex flex-row min-h-screen text-gray-700 bg-gray-100 dark:bg-[#101010] dark:text-gray-200"
   >
     <Sidebar />
     <main
