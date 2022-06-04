@@ -22,6 +22,9 @@ module.exports = {
       fontFamily: {
         comfortaa: ["Comfortaa", "cursive"],
       },
+      content: {
+        copy: 'url("~/assets/icons/copy.svg")',
+      },
     },
   },
 };

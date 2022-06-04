@@ -13,6 +13,7 @@ export const typeDefs = gql`
   }
 
   type Mutation {
+    # Create Mutations
     addPc(
       hostname: String!
       staticip: Boolean!
@@ -26,6 +27,8 @@ export const typeDefs = gql`
     addHouse(number: Int!): House
     addRoom(name: String!, house: Int, houseId: ID): Room
     addNetwork(name: String!): Network
+    # Delete Mutations
+    delPc(id: ID, hostname: String): PC
   }
 
   type PC {

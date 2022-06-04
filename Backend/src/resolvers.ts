@@ -172,6 +172,7 @@ export const resolvers = {
   },
 
   Mutation: {
+    // Create Mutations
     addPc: async (
       _: any,
       {
@@ -237,6 +238,18 @@ export const resolvers = {
       });
       if (room) {
         return room;
+      }
+    },
+    // Delete Mutations
+    delPc: async (_: any, { id, hostname }: any) => {
+      const pc = await prisma.PC.delete({
+        where: {
+          id: id,
+          hostname: hostname,
+        },
+      });
+      if (pc) {
+        return pc;
       }
     },
   },
