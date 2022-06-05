@@ -29,6 +29,9 @@ export const typeDefs = gql`
     addNetwork(name: String!): Network
     # Delete Mutations
     delPc(id: ID, hostname: String): PC
+    delNetwork(id: ID, name: String): Network
+    delHouse(id: ID, number: String): House
+    delRoom(id: ID, name: String): Room
   }
 
   type PC {

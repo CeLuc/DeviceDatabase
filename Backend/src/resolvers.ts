@@ -252,5 +252,38 @@ export const resolvers = {
         return pc;
       }
     },
+    delNetwork: async (_: any, { id, name }: any) => {
+      const network = await prisma.Network.delete({
+        where: {
+          id: id,
+          name: name,
+        },
+      });
+      if (network) {
+        return network;
+      }
+    },
+    delHouse: async (_: any, { id, number }: any) => {
+      const house = await prisma.PC.delete({
+        where: {
+          id: id,
+          number: number,
+        },
+      });
+      if (house) {
+        return house;
+      }
+    },
+    delRoom: async (_: any, { id, name }: any) => {
+      const room = await prisma.PC.delete({
+        where: {
+          id: id,
+          name: name,
+        },
+      });
+      if (room) {
+        return room;
+      }
+    },
   },
 };
