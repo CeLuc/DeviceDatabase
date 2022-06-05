@@ -9,7 +9,9 @@
       <Header />
       <div class="flex flex-col flex-grow p-4 main-content">
         <Breadcrumbs />
-        <slot />
+        <div class="mx-10 prose max-w-none">
+          <slot />
+        </div>
       </div>
     </main>
   </div>

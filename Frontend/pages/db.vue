@@ -20,7 +20,7 @@ definePageMeta({
 });
 </script>
 <template>
-  <div class="mx-10 rounded-sm bg-gray-50 dark:bg-gray-800">
+  <div class="rounded-sm bg-gray-50 dark:bg-gray-800">
     <div
       class="flex w-full py-5 text-lg text-left uppercase border-t-2 border-b-2 border-gray-600 border-t-transparent"
     >

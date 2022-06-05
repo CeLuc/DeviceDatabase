@@ -33,7 +33,7 @@ const router = useRouter();
         :class="[color != null ? color : defaultColor]"
       >
         <div
-          class="absolute w-8 h-8 transition-transform duration-1000 ease-in-out right-5"
+          class="absolute w-8 h-8 transition-transform duration-700 ease-in-out right-5"
           :class="[isOpen ? '-rotate-90' : 'rotate-0']"
         >
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -46,11 +46,11 @@ const router = useRouter();
     </div>
     <div>
       <ul
-        class="relative w-11/12 mx-auto overflow-hidden transition-all duration-1000 ease-in-out"
+        class="relative w-11/12 mx-auto overflow-hidden transition-all duration-700 ease-in-out"
         :class="[isOpen ? 'h-[164px]' : 'h-0']"
       >
         <div
-          class="absolute w-full transition-all duration-1000 ease-in-out bg-gray-700 rounded-b-xl"
+          class="absolute w-full transition-all duration-700 ease-in-out bg-gray-700 rounded-b-xl"
           :class="[isOpen ? '-translate-y-0' : '-translate-y-full']"
         >
           <!-- Choose between two Animations (cl: contents) -->
