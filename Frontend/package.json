@@ -16,6 +16,10 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.5",
+    "@headlessui/vue": "^1.6.4",
+    "@nuxtjs-alt/auth": "latest",
+    "@nuxtjs-alt/axios": "latest",
+    "@nuxtjs-alt/pinia": "latest",
     "@vue/apollo-composable": "^4.0.0-alpha.17",
     "graphql": "^16.5.0",
     "graphql-tag": "^2.12.6",

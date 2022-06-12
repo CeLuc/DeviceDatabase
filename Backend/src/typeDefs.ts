@@ -3,20 +3,21 @@ import { gql } from "apollo-server-express";
 export const typeDefs = gql`
   type Query {
     pcs: [PC]!
-    pc(id: ID, hostname: String): PC
+    pc(id: ID, hostname: String, ip: String): PC
     houses: [House]!
     house(id: ID, number: Int): House
     rooms: [Room]!
     room(id: ID, name: String): Room
     networks: [Network]!
     network(id: ID, name: String): Network
+    users: [User]
   }
 
   type Mutation {
     # Create Mutations
     addPc(
       hostname: String!
-      staticip: Boolean!
+      ip: String!
       network: String
       networkId: ID
       house: Int
@@ -28,13 +29,39 @@ export const typeDefs = gql`
     addRoom(name: String!, house: Int, houseId: ID): Room
     addNetwork(name: String!): Network
     # Delete Mutations
-    delPc(id: ID, hostname: String): PC
+    delPc(id: ID, hostname: String, ip: String): PC
+    delNetwork(id: ID, name: String): Network
+    delHouse(id: ID, number: String): House
+    delRoom(id: ID, name: String): Room
+    # Authentication Mutation
+    signupUser(data: UserCreateInput!): AuthPayLoad
+    loginUser(data: UserLoginInput!): AuthPayLoad
+  }
+
+  input UserCreateInput {
+    email: String!
+    name: String!
+    password: String!
+  }
+  input UserLoginInput {
+    email: String!
+    password: String!
+  }
+  type AuthPayLoad {
+    token: String!
+  }
+
+  type User {
+    id: ID!
+    name: String!
+    email: String!
+    password: String!
   }
 
   type PC {
     id: ID!
     hostname: String!
-    staticip: Boolean!
+    ip: String
     network: Network
     house: House
     room: Room

@@ -1,9 +1,15 @@
 import { transformDocument } from "@prisma/client/runtime";
-
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const { prisma } = require("./prisma/client");
+const { decodedToken } = require("./decodedToken");
 
 export const resolvers = {
   Query: {
+    users: async (root: any, args: any, { req }: any, info: any) => {
+      const decoded = decodedToken(req);
+      return prisma.User.findMany();
+    },
     pcs: () => {
       return prisma.PC.findMany({
         include: {
@@ -21,11 +27,12 @@ export const resolvers = {
         },
       });
     },
-    pc: (parent: any, { id, hostname }: any) => {
+    pc: (parent: any, { id, hostname, ip }: any) => {
       return prisma.PC.findUnique({
         where: {
           id: id,
           hostname: hostname,
+          ip: ip,
         },
         include: {
           network: true,
@@ -175,21 +182,12 @@ export const resolvers = {
     // Create Mutations
     addPc: async (
       _: any,
-      {
-        hostname,
-        staticip,
-        network,
-        networkId,
-        house,
-        houseId,
-        room,
-        roomId,
-      }: any
+      { hostname, ip, network, networkId, house, houseId, room, roomId }: any
     ) => {
       const pc = await prisma.PC.create({
         data: {
           hostname: hostname,
-          staticip: staticip,
+          ip: ip,
           network: {
             connect: { id: networkId, name: network },
           },
@@ -241,16 +239,78 @@ export const resolvers = {
       }
     },
     // Delete Mutations
-    delPc: async (_: any, { id, hostname }: any) => {
+    delPc: async (_: any, { id, hostname, ip }: any) => {
       const pc = await prisma.PC.delete({
         where: {
           id: id,
           hostname: hostname,
+          ip: ip,
         },
       });
       if (pc) {
         return pc;
       }
+    },
+    delNetwork: async (_: any, { id, name }: any) => {
+      const network = await prisma.Network.delete({
+        where: {
+          id: id,
+          name: name,
+        },
+      });
+      if (network) {
+        return network;
+      }
+    },
+    delHouse: async (_: any, { id, number }: any) => {
+      const house = await prisma.PC.delete({
+        where: {
+          id: id,
+          number: number,
+        },
+      });
+      if (house) {
+        return house;
+      }
+    },
+    delRoom: async (_: any, { id, name }: any) => {
+      const room = await prisma.PC.delete({
+        where: {
+          id: id,
+          name: name,
+        },
+      });
+      if (room) {
+        return room;
+      }
+    },
+    // Authentication
+    signupUser: async (root: any, args: any) => {
+      const {
+        data: { email, name, password },
+      } = args;
+      const newUser = await prisma.User.create({
+        data: {
+          email: email,
+          name: name,
+          password: bcrypt.hashSync(password, 3),
+        },
+      });
+      return { token: jwt.sign(newUser, "supersecret") };
+    },
+    loginUser: async (root: any, args: any) => {
+      const {
+        data: { email, password },
+      } = args;
+      const theUser = await prisma.User.findUnique({
+        where: {
+          email,
+        },
+      });
+      if (!theUser) throw new Error("Unable to Login");
+      const isMatch = bcrypt.compareSync(password, theUser.password);
+      if (!isMatch) throw new Error("Unable to Login");
+      return { token: jwt.sign(theUser, "supersecret") };
     },
   },
 };

@@ -11,6 +11,9 @@ const startServer = async () => {
   const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
+    context: (req) => ({
+      req,
+    }),
   });
 
   await apolloServer.start();
@@ -20,18 +23,7 @@ const startServer = async () => {
     path: "/graphql",
   });
 
-  httpServer.listen(
-    {
-      port: process.env.BACKEND_PORT || 4000,
-      host: process.env.BACKEND_HOST || "localhost",
-    },
-    () =>
-      console.log(
-        `Server listening on ${process.env.BACKEND_HOST || "localhost"}:${
-          process.env.BACKEND_PORT || 4000
-        }${apolloServer.graphqlPath}`
-      )
-  );
+  httpServer.listen(4000);
 };
 
 startServer();
