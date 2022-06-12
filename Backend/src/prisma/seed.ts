@@ -1,7 +1,18 @@
 import { PrismaClient } from "@prisma/client";
 const { prisma } = require("./client");
+const bcrypt = require("bcrypt");
 
 async function main() {
+  const tuser = await prisma.User.upsert({
+    where: { email: "test@gmail.com" },
+    updated: {},
+    create: {
+      email: "test@gmail.com",
+      name: "Max Muschtermannnnnnnnn",
+      password: bcrypt.hashSync("ichHasseMich69", 3),
+    },
+  });
+
   const h1 = await prisma.House.upsert({
     where: { number: 1 },
     update: {},
