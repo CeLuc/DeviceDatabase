@@ -10,6 +10,7 @@ export const typeDefs = gql`
     room(id: ID, name: String): Room
     networks: [Network]!
     network(id: ID, name: String): Network
+    users: [User]
   }
 
   type Mutation {
@@ -32,6 +33,29 @@ export const typeDefs = gql`
     delNetwork(id: ID, name: String): Network
     delHouse(id: ID, number: String): House
     delRoom(id: ID, name: String): Room
+    # Authentication Mutation
+    signupUser(data: UserCreateInput!): AuthPayLoad
+    loginUser(data: UserLoginInput!): AuthPayLoad
+  }
+
+  input UserCreateInput {
+    email: String!
+    name: String!
+    password: String!
+  }
+  input UserLoginInput {
+    email: String!
+    password: String!
+  }
+  type AuthPayLoad {
+    token: String!
+  }
+
+  type User {
+    id: ID!
+    name: String!
+    email: String!
+    password: String!
   }
 
   type PC {

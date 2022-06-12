@@ -1,9 +1,15 @@
 import { transformDocument } from "@prisma/client/runtime";
-
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const { prisma } = require("./prisma/client");
+const { decodedToken } = require("./decodedToken");
 
 export const resolvers = {
   Query: {
+    users: async (root: any, args: any, { req }: any, info: any) => {
+      const decoded = decodedToken(req);
+      return prisma.User.findMany();
+    },
     pcs: () => {
       return prisma.PC.findMany({
         include: {
@@ -277,6 +283,34 @@ export const resolvers = {
       if (room) {
         return room;
       }
+    },
+    // Authentication
+    signupUser: async (root: any, args: any) => {
+      const {
+        data: { email, name, password },
+      } = args;
+      const newUser = await prisma.User.create({
+        data: {
+          email: email,
+          name: name,
+          password: bcrypt.hashSync(password, 3),
+        },
+      });
+      return { token: jwt.sign(newUser, "supersecret") };
+    },
+    loginUser: async (root: any, args: any) => {
+      const {
+        data: { email, password },
+      } = args;
+      const theUser = await prisma.User.findUnique({
+        where: {
+          email,
+        },
+      });
+      if (!theUser) throw new Error("Unable to Login");
+      const isMatch = bcrypt.compareSync(password, theUser.password);
+      if (!isMatch) throw new Error("Unable to Login");
+      return { token: jwt.sign(theUser, "supersecret") };
     },
   },
 };
