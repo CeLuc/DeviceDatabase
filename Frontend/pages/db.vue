@@ -15,9 +15,6 @@ export default {
     },
   },
 };
-definePageMeta({
-  layout: "default",
-});
 </script>
 <template>
   <div class="rounded-sm bg-gray-50 dark:bg-gray-800">
@@ -40,7 +37,7 @@ definePageMeta({
           <option value="100">100</option>
           <option value="all">All</option>
         </select>
-        <span>Einträge</span>
+        <span>Items</span>
       </div>
       <table
         class="w-full mx-auto text-sm text-left border-t table-auto border-gray-600/80"
@@ -48,6 +45,7 @@ definePageMeta({
         <thead class="text-xs uppercase">
           <tr>
             <th scope="col" class="relative px-6 py-3">Hostname</th>
+            <th scope="col" class="relative px-6 py-3">IP</th>
             <th scope="col" class="relative px-6 py-3">Netzwerk</th>
             <th scope="col" class="relative px-6 py-3">Haus</th>
             <th scope="col" class="relative px-6 py-3">Raum</th>
@@ -70,6 +68,16 @@ definePageMeta({
               <div
                 class="absolute justify-center hidden w-3 h-3 ml-2 group-hover:inline-block group-hover:cursor-pointer content-copy"
                 @click="copy(pc.hostname)"
+              ></div>
+            </td>
+            <td
+              scope="row"
+              class="px-6 py-4 font-medium group test dark:text-white whitespace-nowrap after:content-copy after:h-3 after:w-3 after:hover:cursor-pointer after:hidden after:ml-2 after:relative after:justify-center"
+            >
+              {{ pc.ip }}
+              <div
+                class="absolute justify-center hidden w-3 h-3 ml-2 group-hover:inline-block group-hover:cursor-pointer content-copy"
+                @click="copy(pc.ip)"
               ></div>
             </td>
             <td class="test group">

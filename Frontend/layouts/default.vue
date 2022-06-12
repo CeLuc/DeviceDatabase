@@ -9,7 +9,7 @@
       <Header />
       <div class="flex flex-col flex-grow p-4 main-content">
         <Breadcrumbs />
-        <div class="mx-10 prose max-w-none">
+        <div class="mx-10 prose dark:prose-invert max-w-none">
           <slot />
         </div>
       </div>

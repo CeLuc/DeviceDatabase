@@ -21,11 +21,12 @@ export const resolvers = {
         },
       });
     },
-    pc: (parent: any, { id, hostname }: any) => {
+    pc: (parent: any, { id, hostname, ip }: any) => {
       return prisma.PC.findUnique({
         where: {
           id: id,
           hostname: hostname,
+          ip: ip,
         },
         include: {
           network: true,
@@ -175,21 +176,12 @@ export const resolvers = {
     // Create Mutations
     addPc: async (
       _: any,
-      {
-        hostname,
-        staticip,
-        network,
-        networkId,
-        house,
-        houseId,
-        room,
-        roomId,
-      }: any
+      { hostname, ip, network, networkId, house, houseId, room, roomId }: any
     ) => {
       const pc = await prisma.PC.create({
         data: {
           hostname: hostname,
-          staticip: staticip,
+          ip: ip,
           network: {
             connect: { id: networkId, name: network },
           },
@@ -241,11 +233,12 @@ export const resolvers = {
       }
     },
     // Delete Mutations
-    delPc: async (_: any, { id, hostname }: any) => {
+    delPc: async (_: any, { id, hostname, ip }: any) => {
       const pc = await prisma.PC.delete({
         where: {
           id: id,
           hostname: hostname,
+          ip: ip,
         },
       });
       if (pc) {

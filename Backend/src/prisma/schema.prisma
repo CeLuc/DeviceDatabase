@@ -10,7 +10,9 @@ datasource db {
 model PC {
   id        String  @id @default(uuid())
   hostname  String  @unique
-  staticip  Boolean @default(false)
+  ip        String  @default("dhcp")
+  model     Model?  @relation(fields: [modelId], references: [id])
+  modelId   String?
   network   Network @relation(fields: [networkId], references: [id])
   networkId String
   house     House   @relation(fields: [houseId], references: [id])
@@ -38,4 +40,37 @@ model Network {
   id   String @id @default(uuid())
   name String @unique
   pcs  PC[]
+}
+
+model Model {
+  id           String     @id @default(uuid())
+  modelnumber  String
+  dualscreem   Boolean    @default(false)
+  manufactor   Manufactor @relation(fields: [manufactorId], references: [id])
+  manufactorId String
+  PC           PC[]
+}
+
+model Manufactor {
+  id     String  @id @default(uuid())
+  models Model[]
+  name   String  @unique
+}
+
+model Server {
+  id       String @id @default(uuid())
+  hostname String @unique
+  os       String
+  modell   String
+  ip       String @unique
+  buydate  String
+  waranty  Int
+
+}
+
+model VM {
+  id       String @id @default(uuid())
+  hostname String @unique
+  ip       String @unique
+  os       String
 }

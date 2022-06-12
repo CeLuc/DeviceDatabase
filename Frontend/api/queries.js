@@ -5,6 +5,7 @@ export const GET_PCS = gql`
     pcs {
       id
       hostname
+      ip
       room {
         name
       }

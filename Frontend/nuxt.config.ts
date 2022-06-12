@@ -4,7 +4,13 @@ import tailwindTypography from "@tailwindcss/typography";
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   // modules are nuxt extensions
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/color-mode",
+    "@nuxtjs-alt/axios",
+    "@nuxtjs-alt/auth",
+    "@nuxtjs-alt/pinia",
+  ],
 
   // disable generating the shim for *.vue files because volar overtake-mode is activated
   typescript: {
@@ -23,6 +29,9 @@ export default defineNuxtConfig({
   build: {
     transpile: ["@apollo/client", "ts-invariant/process"],
   },
+
+  // auth config
+  auth: {},
 
   // tailwindcss nuxt module configuration
   tailwindcss: {

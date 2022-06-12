@@ -3,7 +3,7 @@ import { gql } from "apollo-server-express";
 export const typeDefs = gql`
   type Query {
     pcs: [PC]!
-    pc(id: ID, hostname: String): PC
+    pc(id: ID, hostname: String, ip: String): PC
     houses: [House]!
     house(id: ID, number: Int): House
     rooms: [Room]!
@@ -16,7 +16,7 @@ export const typeDefs = gql`
     # Create Mutations
     addPc(
       hostname: String!
-      staticip: Boolean!
+      ip: String!
       network: String
       networkId: ID
       house: Int
@@ -28,7 +28,7 @@ export const typeDefs = gql`
     addRoom(name: String!, house: Int, houseId: ID): Room
     addNetwork(name: String!): Network
     # Delete Mutations
-    delPc(id: ID, hostname: String): PC
+    delPc(id: ID, hostname: String, ip: String): PC
     delNetwork(id: ID, name: String): Network
     delHouse(id: ID, number: String): House
     delRoom(id: ID, name: String): Room
@@ -37,7 +37,7 @@ export const typeDefs = gql`
   type PC {
     id: ID!
     hostname: String!
-    staticip: Boolean!
+    ip: String
     network: Network
     house: House
     room: Room

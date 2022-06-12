@@ -68,7 +68,7 @@ async function main() {
     update: {},
     create: {
       hostname: "A-BJE-P0094",
-      staticip: true,
+      ip: "172.21.2.94",
       network: {
         connect: {
           name: "FSE",
@@ -96,7 +96,7 @@ async function main() {
     update: {},
     create: {
       hostname: "A-BJE-P0105",
-      staticip: false,
+      ip: "172.21.2.105",
       network: {
         connect: {
           name: "FSE",
@@ -124,7 +124,7 @@ async function main() {
     update: {},
     create: {
       hostname: "A-BJE-PS03R3-1",
-      staticip: false,
+      ip: "dhcp",
       network: {
         connect: {
           name: "FSE",
@@ -152,7 +152,7 @@ async function main() {
     update: {},
     create: {
       hostname: "A-BJE-PS03R3-2",
-      staticip: false,
+      ip: "dhcp",
       network: {
         connect: {
           name: "Schul03",
