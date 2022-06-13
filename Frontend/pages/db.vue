@@ -28,7 +28,7 @@ export default {
         <span>Show</span>
         <select
           name="Entries"
-          class="py-1 pl-2 pr-6 mx-1 rounded dark:bg-gray-600"
+          class="py-1 pl-2 pr-6 mx-1 rounded dark:bg-gray-700"
           id=""
         >
           <option value="10">10</option>

@@ -1,42 +1,59 @@
-<template>
-  <div>
-    <form @submit.prevent="userLogin">
-      <div>
-        <label>Username</label>
-        <input type="text" v-model="login.username" />
-      </div>
-      <div>
-        <label>Password</label>
-        <input type="text" v-model="login.password" />
-      </div>
-      <div>
-        <button type="submit">Submit</button>
-      </div>
-    </form>
-  </div>
-</template>
-
-<script>
+<!-- <script>
 export default {
+  middleware: "auth",
+
+  auth: "guest",
+
   data() {
     return {
-      login: {
-        username: "",
+      form: {
+        email: "",
         password: "",
       },
+      formBusy: false,
     };
   },
+
   methods: {
-    async userLogin() {
+    async handleLoginSubmit() {
+      const credentials = this.form;
+      this.formBusy = true;
+
       try {
-        let response = await this.$auth.loginWith("local", {
-          data: this.login,
-        });
-        console.log(response);
-      } catch (err) {
-        console.log(err);
+        // Using our custom strategy
+        await this.$auth.loginWith("graphql", credentials);
+
+        this.formBusy = false;
+      } catch (errors) {
+        this.formBusy = false;
+        // Handle errors
       }
     },
   },
 };
 </script>
+
+<template>
+  <div>
+    <form method="POST" @submit.prevent="handleLoginSubmit">
+      <div class="">
+        <label for="email">Email address</label>
+        <input
+          id="email"
+          v-model="form.email"
+          type="email"
+          class=""
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div class="">
+        <label for="password">Password</label>
+        <input id="password" v-model="form.password" type="password" class="" />
+      </div>
+
+      <button type="submit" class="" :disabled="formBusy">
+        <span v-if="formBusy" class="mr-2">loading</span> Login
+      </button>
+    </form>
+  </div>
+</template> -->

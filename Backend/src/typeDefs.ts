@@ -34,8 +34,8 @@ export const typeDefs = gql`
     delHouse(id: ID, number: String): House
     delRoom(id: ID, name: String): Room
     # Authentication Mutation
-    signupUser(data: UserCreateInput!): AuthPayLoad
-    loginUser(data: UserLoginInput!): AuthPayLoad
+    signupUser(data: UserCreateInput!): AuthPayLoad!
+    loginUser(data: UserLoginInput!): AuthPayLoad!
   }
 
   input UserCreateInput {

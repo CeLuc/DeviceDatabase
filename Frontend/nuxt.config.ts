@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/color-mode",
     "@nuxtjs-alt/axios",
-    "@nuxtjs-alt/auth",
+    "@nuxtjs/auth-next",
     "@nuxtjs-alt/pinia",
   ],
 
@@ -31,7 +31,21 @@ export default defineNuxtConfig({
   },
 
   // auth config
-  auth: {},
+  auth: {
+    strategies: {
+      GraphQLScheme: {
+        scheme: "~/scheme/graphqlScheme.ts",
+        enabled: true,
+        name: "GraphQLScheme",
+      },
+    },
+    redirect: {
+      login: "/login",
+      logout: "/login?logout=true",
+      callback: "/login",
+      home: "/dashboard",
+    },
+  },
 
   // tailwindcss nuxt module configuration
   tailwindcss: {
