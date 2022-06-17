@@ -3,13 +3,10 @@ import { Switch } from "@headlessui/vue";
 const colorMode = useColorMode();
 const isEnabled = useState("isEnabled", () => false);
 const testChecked = useState("testChecked", () => true);
-definePageMeta({
-  middleware: ["auth"],
-});
 </script>
 <template>
   <div
-    class="container relative flex flex-row w-full min-h-screen mx-auto bg-white rounded-xl"
+    class="container relative flex flex-row min-h-screen mx-auto bg-white w-afull rounded-xl"
   >
     <aside
       class="transition-transform duration-150 ease-in -translate-x-full border-gray-200 border-r-[1px] w-72 md:translate-x-0"

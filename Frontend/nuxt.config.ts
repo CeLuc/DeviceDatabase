@@ -8,8 +8,9 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/color-mode",
     "@nuxtjs-alt/axios",
-    "@nuxtjs/auth-next",
+    // "@nuxtjs/auth-next",
     "@nuxtjs-alt/pinia",
+    // "@pinia/nuxt",
   ],
 
   // disable generating the shim for *.vue files because volar overtake-mode is activated
@@ -31,21 +32,21 @@ export default defineNuxtConfig({
   },
 
   // auth config
-  auth: {
-    strategies: {
-      GraphQLScheme: {
-        scheme: "~/scheme/graphqlScheme.ts",
-        enabled: true,
-        name: "GraphQLScheme",
-      },
-    },
-    redirect: {
-      login: "/login",
-      logout: "/login?logout=true",
-      callback: "/login",
-      home: "/dashboard",
-    },
-  },
+  // auth: {
+  //   strategies: {
+  //     GraphQLScheme: {
+  //       scheme: "~/scheme/graphqlScheme.ts",
+  //       enabled: true,
+  //       name: "GraphQLScheme",
+  //     },
+  //   },
+  //   redirect: {
+  //     login: "/login",
+  //     logout: "/login?logout=true",
+  //     callback: "/login",
+  //     home: "/dashboard",
+  //   },
+  // },
 
   // tailwindcss nuxt module configuration
   tailwindcss: {

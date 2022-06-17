@@ -10,7 +10,8 @@ export const resolvers = {
       const decoded = decodedToken(req);
       return prisma.User.findMany();
     },
-    pcs: () => {
+    pcs: (root: any, args: any, { req }: any, info: any) => {
+      const decoded = decodedToken(req);
       return prisma.PC.findMany({
         include: {
           network: true,
@@ -310,7 +311,7 @@ export const resolvers = {
       if (!theUser) throw new Error("Unable to Login");
       const isMatch = bcrypt.compareSync(password, theUser.password);
       if (!isMatch) throw new Error("Unable to Login");
-      return { token: jwt.sign(theUser, "supersecret") };
+      return { token: jwt.sign(theUser, "supersecret"), id: theUser.id };
     },
   },
 };

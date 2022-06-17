@@ -1,59 +1,62 @@
-<!-- <script>
-export default {
-  middleware: "auth",
-
-  auth: "guest",
-
-  data() {
-    return {
-      form: {
-        email: "",
-        password: "",
-      },
-      formBusy: false,
-    };
-  },
-
-  methods: {
-    async handleLoginSubmit() {
-      const credentials = this.form;
-      this.formBusy = true;
-
-      try {
-        // Using our custom strategy
-        await this.$auth.loginWith("graphql", credentials);
-
-        this.formBusy = false;
-      } catch (errors) {
-        this.formBusy = false;
-        // Handle errors
-      }
-    },
-  },
-};
-</script>
-
 <template>
   <div>
-    <form method="POST" @submit.prevent="handleLoginSubmit">
-      <div class="">
-        <label for="email">Email address</label>
+    <h2 class="mb-4">Create Character</h2>
+    <form @submit.prevent="createCharacter">
+      <div class="mb-4">
         <input
-          id="email"
-          v-model="form.email"
+          v-model="credemail"
           type="email"
-          class=""
-          aria-describedby="emailHelp"
+          class="px-3 py-2 leading-tight text-gray-700 border rounded shadow"
+          placeholder="email"
         />
       </div>
-      <div class="">
-        <label for="password">Password</label>
-        <input id="password" v-model="form.password" type="password" class="" />
+      <div class="mb-4">
+        <input
+          v-model="credpassword"
+          type="password"
+          class="px-3 py-2 leading-tight text-gray-700 border rounded shadow"
+          placeholder="password"
+        />
       </div>
-
-      <button type="submit" class="" :disabled="formBusy">
-        <span v-if="formBusy" class="mr-2">loading</span> Login
+      <button
+        class="px-3 py-2 font-semibold text-white bg-green-600"
+        type="submit"
+        @click="llgg"
+      >
+        Login
       </button>
     </form>
   </div>
-</template> -->
+</template>
+<script setup>
+import gql from "graphql-tag";
+import { useMutation } from "@vue/apollo-composable";
+
+const credemail = useState("credemail");
+const credpassword = useState("credpassword");
+
+const LOGIN_REQ = gql`
+  mutation ($email: String!, $password: String!) {
+    loginUser(data: { email: $email, password: $password }) {
+      token
+    }
+  }
+`;
+
+const { mutate: loginMutation, error: error, onDone } = useMutation(LOGIN_REQ);
+onDone((result) => {
+  if (process.client) {
+    localStorage.setItem("authToken", result.data.loginUser.token);
+  }
+});
+
+function llgg() {
+  const email = credemail.value;
+  const password = credpassword.value;
+  console.log(email);
+  console.log(password);
+
+  loginMutation({ email: email, password: password });
+  console.log(data);
+}
+</script>

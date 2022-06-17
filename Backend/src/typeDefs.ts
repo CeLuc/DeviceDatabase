@@ -49,6 +49,7 @@ export const typeDefs = gql`
   }
   type AuthPayLoad {
     token: String!
+    id: ID
   }
 
   type User {

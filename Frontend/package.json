@@ -21,6 +21,7 @@
     "@nuxtjs-alt/axios": "latest",
     "@nuxtjs-alt/pinia": "latest",
     "@nuxtjs/auth-next": "5.0.0-1648802546.c9880dc",
+    "@nuxtjs/axios": "^5.13.6",
     "@vue/apollo-composable": "^4.0.0-alpha.17",
     "graphql": "^16.5.0",
     "graphql-tag": "^2.12.6",
