@@ -1,8 +1,13 @@
 <script setup>
 import { Switch } from "@headlessui/vue";
+import functions from "~/functions";
 const colorMode = useColorMode();
 const isEnabled = useState("isEnabled", () => false);
 const testChecked = useState("testChecked", () => true);
+const jwt = useCookie("jwt");
+const parseJwt = functions.parseJwt;
+
+const userData = parseJwt(jwt.value);
 </script>
 <template>
   <div
@@ -115,7 +120,10 @@ const testChecked = useState("testChecked", () => true);
               <h3 class="mb-0">Profile</h3>
               <span>Ora @ labora</span>
             </div>
-            <div class="relative w-full pb-20 border-b-[1px] border-b-gray-500">
+            <div
+              class="relative w-full pb-20 border-b-[1px] border-b-gray-500"
+              v-if="userData"
+            >
               <div class="relative w-8/12 space-y-2">
                 <span>Username</span>
                 <input
@@ -123,7 +131,7 @@ const testChecked = useState("testChecked", () => true);
                   id="username"
                   name="profile"
                   placeholder="Username"
-                  value="gruberl"
+                  :value="userData.username"
                   class="block w-full px-2 py-1 border-2 border-gray-200 rounded-md disabled:bg-slate-50 disabled:text-slate-400 disabled:border-slate-200 focus:border-gray-800 focus:outline-none"
                 />
               </div>
