@@ -1,13 +1,3 @@
 <template>
-  <div>Logout</div>
+  <div>Logging out...</div>
 </template>
-<script setup>
-definePageMeta({
-  middleware: () => {
-    if (process.client) {
-      localStorage.removeItem("authToken");
-      return "/login";
-    }
-  },
-});
-</script>
