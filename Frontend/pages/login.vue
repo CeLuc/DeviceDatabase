@@ -54,6 +54,7 @@ onDone((result) => {
   if (process.client) {
     localStorage.setItem("currentUser", JSON.stringify(parseJwt(jwt.value)));
   }
+  router.push("/");
 });
 
 function login() {
@@ -61,7 +62,5 @@ function login() {
   const password = credpassword.value;
 
   loginMutation({ username: username, password: password });
-
-  router.push("/");
 }
 </script>
