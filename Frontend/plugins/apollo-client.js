@@ -22,10 +22,10 @@ export default defineNuxtPlugin((nuxtApp) => {
   const httpLink = new HttpLink({ uri: useRuntimeConfig().public.apiBase });
   const authMiddleware = new ApolloLink((operation, forward) => {
     // add the authorization to the headers
-    const token = localStorage.getItem("authToken");
+    const jwt = useCookie("jwt");
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : "",
+        authorization: jwt ? `Bearer ${jwt.value}` : "",
       },
     });
     return forward(operation);

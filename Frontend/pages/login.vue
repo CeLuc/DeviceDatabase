@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h2 class="mb-4">Create Character</h2>
+    <h2 class="mb-4">Login</h2>
     <form @submit.prevent="createCharacter">
       <div class="mb-4">
         <input
-          v-model="credemail"
-          type="email"
+          v-model="credusername"
+          type="text"
           class="px-3 py-2 leading-tight text-gray-700 border rounded shadow"
-          placeholder="email"
+          placeholder="username"
         />
       </div>
       <div class="mb-4">
@@ -21,7 +21,7 @@
       <button
         class="px-3 py-2 font-semibold text-white bg-green-600"
         type="submit"
-        @click="llgg"
+        @click="login"
       >
         Login
       </button>
@@ -31,13 +31,16 @@
 <script setup>
 import gql from "graphql-tag";
 import { useMutation } from "@vue/apollo-composable";
+import functions from "~/functions";
 
-const credemail = useState("credemail");
+const credusername = useState("credusername");
 const credpassword = useState("credpassword");
+const jwt = useCookie("jwt");
+const parseJwt = functions.parseJwt;
 
 const LOGIN_REQ = gql`
-  mutation ($email: String!, $password: String!) {
-    loginUser(data: { email: $email, password: $password }) {
+  mutation ($username: String!, $password: String!) {
+    loginUser(data: { username: $username, password: $password }) {
       token
     }
   }
@@ -45,18 +48,17 @@ const LOGIN_REQ = gql`
 
 const { mutate: loginMutation, error: error, onDone } = useMutation(LOGIN_REQ);
 onDone((result) => {
+  jwt.value = result.data.loginUser.token;
+
   if (process.client) {
-    localStorage.setItem("authToken", result.data.loginUser.token);
+    localStorage.setItem("currentUser", JSON.stringify(parseJwt(jwt.value)));
   }
 });
 
-function llgg() {
-  const email = credemail.value;
+function login() {
+  const username = credusername.value;
   const password = credpassword.value;
-  console.log(email);
-  console.log(password);
 
-  loginMutation({ email: email, password: password });
-  console.log(data);
+  loginMutation({ username: username, password: password });
 }
 </script>
