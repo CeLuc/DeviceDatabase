@@ -1,6 +1,8 @@
 <script setup>
 import { Switch } from "@headlessui/vue";
 import functions from "~/functions";
+
+const enabled = ref(false);
 const colorMode = useColorMode();
 const isEnabled = useState("isEnabled", () => false);
 const testChecked = useState("testChecked", () => true);
@@ -113,70 +115,115 @@ const userData = parseJwt(jwt.value);
     <div
       class="flex flex-col flex-grow transition-all duration-150 ease-in -ml-72 main md:ml-0"
     >
-      <div class="flex flex-col flex-grow p-4">
+      <div class="flex flex-col flex-grow">
         <div class="relative pb-20 prose dark:prose-invert max-w-none">
-          <div class="ml-6">
-            <div class="mb-6">
-              <h3 class="mb-0">Profile</h3>
-              <span>Ora @ labora</span>
-            </div>
-            <div
-              class="relative w-full pb-20 border-b-[1px] border-b-gray-500"
-              v-if="userData"
-            >
-              <div class="relative w-8/12 space-y-2">
-                <span>Username</span>
-                <input
-                  type="text"
-                  id="username"
-                  name="profile"
-                  placeholder="Username"
-                  :value="userData.username"
-                  class="block w-full px-2 py-1 border-2 border-gray-200 rounded-md disabled:bg-slate-50 disabled:text-slate-400 disabled:border-slate-200 focus:border-gray-800 focus:outline-none"
-                />
+          <div class="border-b border-gray-200">
+            <div class="p-4 ml-6">
+              <div class="mb-6">
+                <h3 class="mb-0">Profile</h3>
+                <span class="font-light text-gray-500"
+                  >Here are basic Profile informations</span
+                >
               </div>
-              <div class="relative w-8/12 mt-6 space-y-4">
-                <div class="flex w-full">
-                  <div class="left-0 w-6/12 space-y-2">
-                    <span class="">Role</span>
-                    <input
-                      type="text"
-                      id="role"
-                      name="role"
-                      placeholder="Role"
-                      value="Admin"
-                      disabled
-                      class="block w-full px-2 py-1 border-2 border-gray-200 rounded-md disabled:bg-slate-50 disabled:text-slate-400 disabled:border-slate-200 focus:border-gray-800 focus:outline-none"
-                    />
-                  </div>
-                  <div class="absolute right-0 w-5/12 space-y-2">
-                    <span class="">Group</span>
-                    <input
-                      type="text"
-                      id="group"
-                      name="group"
-                      placeholder="Group"
-                      value="Azubi"
-                      disabled
-                      class="block w-full px-2 py-1 border-2 border-gray-200 rounded-md disabled:bg-slate-50 disabled:text-slate-400 disabled:border-slate-200 focus:border-gray-800 focus:outline-none"
-                    />
+              <div class="relative w-full pb-20" v-if="userData">
+                <div class="relative w-8/12 space-y-2">
+                  <span>Username</span>
+                  <input
+                    type="text"
+                    id="username"
+                    name="profile"
+                    placeholder="Username"
+                    :value="userData.username"
+                    class="block w-full px-2 py-1 border-2 border-gray-200 rounded-md disabled:bg-slate-50 disabled:text-slate-400 disabled:border-slate-200 focus:border-gray-800 focus:outline-none"
+                  />
+                </div>
+                <div class="relative w-8/12 mt-6 space-y-4">
+                  <div class="flex w-full">
+                    <div class="left-0 w-6/12 space-y-2">
+                      <span class="">Role</span>
+                      <input
+                        type="text"
+                        id="role"
+                        name="role"
+                        placeholder="Role"
+                        value="Admin"
+                        disabled
+                        class="block w-full px-2 py-1 border-2 border-gray-200 rounded-md disabled:bg-slate-50 disabled:text-slate-400 disabled:border-slate-200 focus:border-gray-800 focus:outline-none"
+                      />
+                    </div>
+                    <div class="absolute right-0 w-5/12 space-y-2">
+                      <span class="">Group</span>
+                      <input
+                        type="text"
+                        id="group"
+                        name="group"
+                        placeholder="Group"
+                        value="Azubi"
+                        disabled
+                        class="block w-full px-2 py-1 border-2 border-gray-200 rounded-md disabled:bg-slate-50 disabled:text-slate-400 disabled:border-slate-200 focus:border-gray-800 focus:outline-none"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="absolute top-0 right-6">
-                <img
-                  src="https://picsum.photos/seed/1654450787264/150/150"
-                  class="rounded-full"
-                  alt=""
-                />
+                <div class="absolute top-0 right-6">
+                  <img
+                    src="https://picsum.photos/seed/1654450787264/150/150"
+                    class="rounded-full"
+                    alt=""
+                  />
+                </div>
               </div>
             </div>
           </div>
-          <div class="left-0 w-6/12 space-y-2" @click="test = !test">
-            Darkmode
+          <div class="p-4 ml-6">
+            <div class="mb-6">
+              <h3 class="mb-0">Settings</h3>
+              <span class="font-light text-gray-500">Some basic Settigns</span>
+            </div>
+            <div class="relative h-[52px] mx-1">
+              <div class="absolute left-0">
+                <h4 class="m-0 font-medium">Darkmode</h4>
+                <span class="font-light text-gray-500"
+                  >Dark appearance for the Website</span
+                >
+              </div>
+              <div class="absolute right-0 flex items-center h-full">
+                <div>
+                  <Switch
+                    v-model="enabled"
+                    :class="enabled ? 'bg-teal-900' : 'bg-teal-700'"
+                    class="relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                  >
+                    <span class="sr-only">Use setting</span>
+                    <span
+                      aria-hidden="true"
+                      :class="enabled ? 'translate-x-9' : 'translate-x-0'"
+                      class="pointer-events-none inline-block h-[34px] w-[34px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out"
+                    />
+                  </Switch>
+                </div>
+              </div>
+            </div>
+            <div class="w-full h-px my-4 bg-gray-200"></div>
+            <div class="relative mx-1 h-[52px]">
+              <div class="absolute left-0">
+                <h4 class="m-0 font-medium">Language</h4>
+                <span class="font-light text-gray-500"
+                  >Change Language for the Website</span
+                >
+              </div>
+              <div class="absolute right-0 flex items-center h-full">
+                <div>
+                  <select
+                    class="px-5 py-2 border border-gray-700 rounded-lg dark:bg-gray-600"
+                  >
+                    <option value="">English</option>
+                    <option value="">Deutsch</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="absolute w-6/12 space-y-2 right-12">Language</div>
-          <ThemeSwitcher />
         </div>
       </div>
     </div>

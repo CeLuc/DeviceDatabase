@@ -37,6 +37,7 @@ const credusername = useState("credusername");
 const credpassword = useState("credpassword");
 const jwt = useCookie("jwt");
 const parseJwt = functions.parseJwt;
+const router = useRouter();
 
 const LOGIN_REQ = gql`
   mutation ($username: String!, $password: String!) {
@@ -60,5 +61,7 @@ function login() {
   const password = credpassword.value;
 
   loginMutation({ username: username, password: password });
+
+  router.push("/");
 }
 </script>
