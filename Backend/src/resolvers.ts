@@ -288,11 +288,11 @@ export const resolvers = {
     // Authentication
     signupUser: async (root: any, args: any) => {
       const {
-        data: { email, name, password },
+        data: { username, name, password },
       } = args;
       const newUser = await prisma.User.create({
         data: {
-          email: email,
+          username: username,
           name: name,
           password: bcrypt.hashSync(password, 3),
         },
@@ -301,17 +301,22 @@ export const resolvers = {
     },
     loginUser: async (root: any, args: any) => {
       const {
-        data: { email, password },
+        data: { username, password },
       } = args;
       const theUser = await prisma.User.findUnique({
         where: {
-          email,
+          username,
         },
       });
       if (!theUser) throw new Error("Unable to Login");
       const isMatch = bcrypt.compareSync(password, theUser.password);
       if (!isMatch) throw new Error("Unable to Login");
-      return { token: jwt.sign(theUser, "supersecret"), id: theUser.id };
+      return {
+        token: jwt.sign(
+          theUser,
+          "K6yhWTXMgPUYUBVACZUqQm4OjV6qOf9e4WcsmuColvGOqMNaSFHGvji69ngKpA"
+        ),
+      };
     },
   },
 };
