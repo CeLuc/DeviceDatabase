@@ -3,13 +3,31 @@ const { prisma } = require("./client");
 const bcrypt = require("bcrypt");
 
 async function main() {
-  const tuser = await prisma.User.upsert({
-    where: { email: "test@gmail.com" },
+  const gruberl = await prisma.User.upsert({
+    where: { username: "gruberl" },
     updated: {},
     create: {
-      email: "test@gmail.com",
-      name: "Max Muschtermannnnnnnnn",
-      password: bcrypt.hashSync("ichHasseMich69", 3),
+      username: "gruberl",
+      name: "Gruber Lucas",
+      password: bcrypt.hashSync("asdf", 3),
+    },
+  });
+  const hertelj = await prisma.User.upsert({
+    where: { username: "hertelj" },
+    updated: {},
+    create: {
+      username: "hertelj",
+      name: "Hertel Jan-Oliver",
+      password: bcrypt.hashSync("asdf", 3),
+    },
+  });
+  const karlc = await prisma.User.upsert({
+    where: { username: "karlc" },
+    updated: {},
+    create: {
+      username: "karlc",
+      name: "Karl Cevin",
+      password: bcrypt.hashSync("asdf", 3),
     },
   });
 
@@ -186,7 +204,21 @@ async function main() {
       room: true,
     },
   });
-  console.log({ h1, h8, r1, sr3, fse, s03, p0094, p0105, ps03r301, ps03r302 });
+  console.log({
+    h1,
+    h8,
+    r1,
+    sr3,
+    fse,
+    s03,
+    p0094,
+    p0105,
+    ps03r301,
+    ps03r302,
+    gruberl,
+    hertelj,
+    karlc,
+  });
 }
 
 main()
