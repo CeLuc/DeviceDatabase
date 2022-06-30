@@ -13,15 +13,15 @@ const userData = parseJwt(jwt.value);
 </script>
 <template>
   <div
-    class="container relative flex flex-row min-h-screen mx-auto bg-white w-afull rounded-xl"
+    class="container relative flex flex-row min-h-screen mx-auto bg-bg-secondary w-afull rounded-xl"
   >
     <aside
-      class="transition-transform duration-150 ease-in -translate-x-full border-gray-200 border-r-[1px] w-72 md:translate-x-0"
+      class="transition-transform duration-150 ease-in -translate-x-full border-bg-primary border-r-[1px] w-72 md:translate-x-0"
     >
       <div>
         <ul class="flex flex-col w-full p-0 list-none">
           <li
-            class="relative my-px text-gray-300 bg-green-500 bg-opacity-10 first:mt-5 group after:absolute after:w-1 after:left-0 after:h-full after:bg-secondary after:top-0 hover:after:w-full after:transition-all after:duration-300"
+            class="relative my-px bg-green-500 bg-opacity-10 first:mt-5 group after:absolute after:w-1 after:left-0 after:h-full after:bg-secondary after:top-0 hover:after:w-full after:transition-all after:duration-300"
           >
             <NuxtLink
               to="/profile"
@@ -182,14 +182,13 @@ const userData = parseJwt(jwt.value);
             </div>
             <div class="relative h-[52px] mx-1">
               <div class="absolute left-0">
-                <h4 class="m-0 font-medium">Darkmode</h4>
+                <h4 class="m-0 font-medium">Colormode</h4>
                 <span class="font-light text-gray-500"
-                  >Dark appearance for the Website</span
+                  >Color appearance for the Website</span
                 >
               </div>
               <div class="absolute right-0 flex items-center h-full">
-                <div>
-                  <Switch
+                <!-- <Switch
                     v-model="enabled"
                     :class="enabled ? 'bg-teal-900' : 'bg-teal-700'"
                     class="scale-75 relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
@@ -200,8 +199,16 @@ const userData = parseJwt(jwt.value);
                       :class="enabled ? 'translate-x-9' : 'translate-x-0'"
                       class="pointer-events-none inline-block h-[34px] w-[34px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out"
                     />
-                  </Switch>
-                </div>
+                  </Switch> -->
+
+                <select
+                  v-model="$colorMode.preference"
+                  class="px-5 py-2 border border-gray-700 rounded-lg dark:bg-gray-600"
+                >
+                  <option value="system">System</option>
+                  <option value="light">Light</option>
+                  <option value="dark">Dark</option>
+                </select>
               </div>
             </div>
             <div class="w-full h-px my-4 bg-gray-200"></div>

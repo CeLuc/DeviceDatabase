@@ -3,12 +3,12 @@ const name = "hallo";
 </script>
 
 <template>
-  <header class="px-4 py-4 bg-white shadow dark:bg-black header">
+  <header class="px-4 py-4 shadow-lg bg-bg-secondary">
     <div class="flex flex-row items-center header-content">
       <form action="#">
         <div class="relative hidden md:flex">
           <div
-            class="absolute top-0 left-0 inline-flex items-center justify-center w-10 h-full text-gray-400"
+            class="absolute top-0 left-0 inline-flex items-center justify-center w-10 h-full text-text-secondary"
           >
             <svg
               class="w-6 h-6"
@@ -31,7 +31,7 @@ const name = "hallo";
             class="flex items-center justify-center w-10 h-10 border-transparent"
           >
             <svg
-              class="w-6 h-6 text-gray-500"
+              class="w-6 h-6 text-text-secondary"
               fill="none"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -49,13 +49,14 @@ const name = "hallo";
           <img
             src="https://pbs.twimg.com/profile_images/378800000298815220/b567757616f720812125bfbac395ff54_normal.png"
             alt=""
-            class="w-10 h-10 bg-gray-200 border rounded-full dark:border-primary"
+            class="w-10 h-10 border rounded-full bg-bg-secondary"
           />
           <span class="flex flex-col ml-2">
             <span class="w-20 font-semibold leading-none tracking-wide truncate"
               >Max Mustermann</span
             >
-            <span class="w-20 mt-1 text-xs leading-none text-gray-500 truncate"
+            <span
+              class="w-20 mt-1 text-xs leading-none truncate text-text-secondary"
               >Admin</span
             >
           </span>

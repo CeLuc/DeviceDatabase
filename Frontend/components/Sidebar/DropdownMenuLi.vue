@@ -5,23 +5,21 @@ const router = useRouter();
 </script>
 
 <template>
-  <li class="my-px text-gray-300 fill-gray-300 group">
+  <li class="my-px text-text-secondary fill-text-secondary group">
     <div
-      activeClass="text-gray-700 fill-gray-700 bg-gray-100"
-      class="relative z-10 flex flex-row items-center w-full h-10 px-3 transition-all duration-200 rounded-lg hover:ease-in group-hover:cursor-pointer hover:bg-gray-100 hover:text-gray-700 hover:fill-gray-700"
+      activeClass="text-text-active fill-text-active"
+      class="relative z-10 flex flex-row items-center w-full h-10 px-3 transition-all duration-200 rounded-lg hover:ease-in group-hover:cursor-pointer hover:text-text-link"
       :class="[
-        router.currentRoute.value.fullPath.startsWith('/db')
-          ? 'text-gray-700 fill-gray-700 bg-gray-100'
-          : isOpen
-          ? 'bg-gray-700/40'
+        router.currentRoute.value.fullPath.startsWith('/tables')
+          ? 'text-text-active fill-text-active'
           : null,
-        isOpen ? 'shadow-md' : null,
+        isOpen ? 'shadow-md bg-bg-tertiary' : null,
       ]"
       @click="isOpen = !isOpen"
     >
       <span
         class="flex items-center justify-center text-lg"
-        :class="[color != null ? color : 'text-gray-400']"
+        :class="[color != null ? color : null]"
       >
         <div class="w-6 h-6 fill-current">
           <slot />
@@ -47,10 +45,10 @@ const router = useRouter();
     <div>
       <ul
         class="relative w-11/12 mx-auto overflow-hidden transition-all duration-700 ease-in-out"
-        :class="[isOpen ? 'h-[164px]' : 'h-0']"
+        :class="[isOpen ? 'h-[246px]' : 'h-0']"
       >
         <div
-          class="absolute w-full transition-all duration-700 ease-in-out bg-gray-700 rounded-b-xl"
+          class="absolute w-full transition-all duration-700 ease-in-out bg-bg-tertiary rounded-b-xl"
           :class="[isOpen ? '-translate-y-0' : '-translate-y-full']"
         >
           <!-- Choose between two Animations (cl: contents) -->

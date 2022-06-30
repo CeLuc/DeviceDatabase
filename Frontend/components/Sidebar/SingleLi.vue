@@ -1,17 +1,18 @@
 <script setup>
-defineProps(["name", "color", "link"]);
+defineProps(["name", "color", "link", "external"]);
 </script>
 
 <template>
-  <li class="my-px text-gray-300">
+  <li class="my-px text-text-secondary fill-text-secondary">
     <NuxtLink
+      v-if="!external"
       :to="{ path: link }"
-      activeClass="text-gray-700 bg-gray-100"
-      class="flex flex-row items-center h-10 px-3 transition-all duration-200 rounded-lg hover:ease-in hover:bg-gray-100 hover:text-gray-700"
+      activeClass="text-text-active fill-text-active"
+      class="flex flex-row items-center h-10 px-3 transition-all duration-200 rounded-lg hover:ease-in hover:text-text-link"
     >
       <span
         class="flex items-center justify-center text-lg"
-        :class="[color != null ? color : 'text-gray-400']"
+        :class="[color != null ? color : null]"
       >
         <div class="w-6 h-6 fill-current">
           <slot />
@@ -19,5 +20,21 @@ defineProps(["name", "color", "link"]);
       </span>
       <span class="ml-3">{{ name }}</span>
     </NuxtLink>
+    <a
+      :href="link"
+      v-if="external"
+      target="_blank"
+      class="flex flex-row items-center h-10 px-3 transition-all duration-200 rounded-lg hover:ease-in hover:text-text-link"
+    >
+      <span
+        class="flex items-center justify-center text-lg"
+        :class="[color != null ? color : null]"
+      >
+        <div class="w-6 h-6 fill-current">
+          <slot />
+        </div>
+      </span>
+      <span class="ml-3">{{ name }}</span>
+    </a>
   </li>
 </template>

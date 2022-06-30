@@ -8,7 +8,7 @@ const router = useRouter();
     >
       <NuxtLink
         to="/"
-        class="flex items-center text-gray-600 hover:underline dark:text-gray-200"
+        class="flex items-center text-text-secondary hover:underline"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ const router = useRouter();
         class="contents group"
       >
         <div class="contents" v-if="item.name != 'index'">
-          <span class="mx-5 text-gray-500 dark:text-gray-300">
+          <span class="mx-5 text-text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-5 h-5"
@@ -46,7 +46,7 @@ const router = useRouter();
 
           <NuxtLink
             :to="item.path"
-            class="text-gray-600 dark:text-gray-200 hover:underline group-last:text-blue-600 dark:group-last:text-blue-400"
+            class="text-text-secondary hover:underline group-last:text-text-active"
           >
             {{ item.path.substring(item.path.lastIndexOf("/") + 1) }}
           </NuxtLink>

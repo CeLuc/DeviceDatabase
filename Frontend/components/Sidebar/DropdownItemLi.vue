@@ -3,15 +3,15 @@ defineProps(["name", "color", "link"]);
 </script>
 
 <template>
-  <li class="my-px text-gray-300 first:mt-0 group">
+  <li class="my-px text-text-secondary fill-text-secondary first:mt-0 group">
     <NuxtLink
       :to="{ path: link }"
-      activeClass="text-gray-700 bg-gray-100"
-      class="flex flex-row items-center h-10 px-3 transition-all duration-200 hover:ease-in hover:bg-gray-100 hover:text-gray-700 group-last:rounded-b-xl"
+      activeClass="text-text-active fill-text-active"
+      class="flex flex-row items-center h-10 px-3 transition-all duration-200 hover:ease-in hover:text-text-link group-last:rounded-b-xl"
     >
       <span
         class="flex items-center justify-center text-lg"
-        :class="[color != null ? color : 'text-gray-400']"
+        :class="[color != null ? color : null]"
       >
         <div class="w-6 h-6 fill-current">
           <slot />

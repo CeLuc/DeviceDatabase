@@ -1,12 +1,12 @@
 <template>
   <aside
-    class="transition-transform duration-150 ease-in transform -translate-x-full bg-gray-800 w-72 md:shadow md:translate-x-0"
+    class="transition-transform duration-150 ease-in transform -translate-x-full bg-bg-secondary w-72 md:shadow md:translate-x-0"
   >
     <div class="flex items-center justify-center py-4 sidebar-header">
       <div class="inline-flex">
         <a href="#" class="inline-flex flex-row items-center">
           <svg
-            class="w-10 h-10 text-red-400"
+            class="w-10 h-10 text-error"
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -14,8 +14,7 @@
               d="M315 703 c-16 -2 -60 -8 -97 -14 l-68 -11 0 -143 c0 -139 -1 -143 -22 -148 -13 -4 -26 -1 -30 6 -18 25 6 -53 48 -157 24 -60 50 -116 58 -124 10 -10 57 -18 157 -25 168 -12 331 0 358 28 15 15 13 19 -27 54 -40 35 -43 40 -31 60 17 26 31 27 47 1 7 -11 17 -20 23 -20 20 0 -14 311 -47 428 -11 40 -21 55 -40 62 -24 9 -263 11 -329 3z m251 -208 c-30 -23 -193 -45 -209 -29 -3 4 3 18 13 32 11 13 20 39 20 57 0 17 2 34 5 36 2 3 46 -15 96 -39 82 -39 91 -46 75 -57z m-213 69 c-34 -15 -44 -34 -18 -34 25 0 17 -39 -10 -52 -34 -15 -57 5 -53 46 3 35 35 56 83 55 l30 -1 -32 -14z m287 -116 c32 -43 38 -120 13 -167 -27 -52 -66 -76 -121 -75 -73 1 -114 27 -180 112 -33 43 -69 85 -81 96 -11 10 -18 22 -15 27 2 4 64 6 137 3 117 -4 136 -3 172 15 52 25 48 26 75 -11z"
             />
           </svg>
-          <span
-            class="ml-1 text-2xl font-bold leading-10 text-gray-100 uppercase"
+          <span class="ml-1 text-2xl font-bold leading-10 uppercase text-danger"
             >Sanktelisabeth</span
           >
         </a>
@@ -37,7 +36,7 @@
         </SidebarSingleLi>
         <li class="my-px">
           <span
-            class="flex px-4 my-4 text-sm font-medium text-gray-300 uppercase"
+            class="flex px-4 my-4 text-sm font-medium uppercase text-text-secondary"
             >Projects</span
           >
         </li>
@@ -48,11 +47,27 @@
             />
           </svg>
           <template #submenus>
-            <SidebarDropdownItemLi name="PCs" link="/db">
+            <SidebarDropdownItemLi name="PCs" link="/tables/pcs">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
                   d="M4 7c0-.55.45-1 1-1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-1.1 0-2 .9-2 2v11h-.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5H14v-3H4V7Zm19 1h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1Zm-1 9h-4v-7h4v7Z"
                 ></path>
+              </svg>
+            </SidebarDropdownItemLi>
+            <SidebarDropdownItemLi name="Hosts" link="/db/rooms">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="none" d="M0 0h24v24H0V0Z" />
+                <path
+                  d="M4 20h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2Zm0-3h2v2H4v-2ZM2 6c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2Zm4 1H4V5h2v2Zm-2 7h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2Zm0-3h2v2H4v-2Z"
+                />
+              </svg>
+            </SidebarDropdownItemLi>
+            <SidebarDropdownItemLi name="VMs" link="/db/rooms">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="none" d="M0 0h24v24H0V0Z" />
+                <path
+                  d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96ZM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3Z"
+                />
               </svg>
             </SidebarDropdownItemLi>
             <SidebarDropdownItemLi name="Netzwerke" link="/db/networks">
@@ -101,7 +116,11 @@
             />
           </svg>
         </SidebarSingleLi>
-        <SidebarSingleLi name="Tasks" link="/tasks">
+        <SidebarSingleLi
+          external="true"
+          name="Tickets"
+          link="http://ticket.sanktelisabeth.local/mantis/my_view_page.php"
+        >
           <svg
             fill="none"
             stroke-linecap="round"
@@ -117,7 +136,7 @@
         </SidebarSingleLi>
         <li class="my-px">
           <span
-            class="flex px-4 my-4 text-sm font-medium text-gray-300 uppercase"
+            class="flex px-4 my-4 text-sm font-medium uppercase text-text-secondary"
             >Account</span
           >
         </li>
@@ -133,7 +152,7 @@
             />
           </svg>
         </SidebarSingleLi>
-        <SidebarSingleLi name="Logout" color="text-red-400" link="/logout">
+        <SidebarSingleLi name="Logout" color="text-danger" link="/logout">
           <svg
             fill="none"
             viewBox="0 0 24 24"
