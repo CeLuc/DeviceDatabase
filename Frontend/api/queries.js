@@ -18,3 +18,21 @@ export const GET_PCS = gql`
     }
   }
 `;
+export const GET_NETWORKS = gql`
+  query get_networks {
+    network {
+      id
+      hostname
+      ip
+      room {
+        name
+      }
+      pcs {
+        name
+      }
+      house {
+        number
+      }
+    }
+  }
+`;

@@ -28,6 +28,12 @@ model PC {
   roomId    String
 }
 
+model Vm {
+  id       String @id @default(uuid())
+  hostname String @unique
+  ip       String @default("dhcp")
+}
+
 model House {
   id     String @id @default(uuid())
   number Int    @unique

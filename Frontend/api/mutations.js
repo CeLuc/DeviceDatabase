@@ -8,3 +8,21 @@ export const DEL_PC = gql`
     }
   }
 `;
+
+export const DEL_NETWORKS = gql`
+  mutation DelNet($id: ID, $name: String) {
+    delNetwork(id: $id, name: $name) {
+      id
+      name
+    }
+  }
+`;
+
+export const DEL_HAUS = gql`
+  mutation DelNet($id: ID, $name: String) {
+    delNetwork(id: $id, name: $name) {
+      id
+      name
+    }
+  }
+`;

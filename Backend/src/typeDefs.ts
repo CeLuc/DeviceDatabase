@@ -11,6 +11,8 @@ export const typeDefs = gql`
     networks: [Network]!
     network(id: ID, name: String): Network
     users: [User]
+    vms: [VM]!
+    vm(id: ID, hostname: String, ip: String): VM
   }
 
   type Mutation {
@@ -28,11 +30,22 @@ export const typeDefs = gql`
     addHouse(number: Int!): House
     addRoom(name: String!, house: Int, houseId: ID): Room
     addNetwork(name: String!): Network
+    addVm(
+      hostname: String!
+      ip: String!
+      network: String
+      networkId: ID
+      house: Int
+      houseId: ID
+      room: String
+      roomId: ID
+    ): VM
     # Delete Mutations
     delPc(id: ID, hostname: String, ip: String): PC
     delNetwork(id: ID, name: String): Network
     delHouse(id: ID, number: String): House
     delRoom(id: ID, name: String): Room
+    delVm(id: ID, hostname: String, ip: String): VM
     # Authentication Mutation
     signupUser(data: UserCreateInput!): AuthPayLoad!
     loginUser(data: UserLoginInput!): AuthPayLoad!
@@ -65,6 +78,12 @@ export const typeDefs = gql`
     network: Network
     house: House
     room: Room
+  }
+
+  type VM {
+    id: ID!
+    hostname: String!
+    ip: String
   }
 
   type House {
