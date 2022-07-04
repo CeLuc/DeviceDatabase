@@ -134,7 +134,7 @@ const userData = parseJwt(jwt.value);
                     name="profile"
                     placeholder="Username"
                     :value="userData.username"
-                    class="block w-full px-2 py-1 border-2 border-gray-200 rounded-md disabled:bg-slate-50 disabled:text-slate-400 disabled:border-slate-200 focus:border-gray-800 focus:outline-none"
+                    class="block px-4 py-2 transition-all duration-150 ease-in border rounded placeholder:text-text-secondary border-bg-primary text-text-primary hover:bg-bg-primary bg-bg-tertiary focus-visible:border-primary focus-visible:outline-none focus-visible:bg-bg-secondary"
                   />
                 </div>
                 <div class="relative w-8/12 mt-6 space-y-4">
@@ -148,7 +148,7 @@ const userData = parseJwt(jwt.value);
                         placeholder="Role"
                         value="Admin"
                         disabled
-                        class="block w-full px-2 py-1 border-2 border-gray-200 rounded-md disabled:bg-slate-50 disabled:text-slate-400 disabled:border-slate-200 focus:border-gray-800 focus:outline-none"
+                        class="block w-full px-4 py-2 transition-all duration-150 ease-in border rounded placeholder:text-text-secondary border-bg-primary text-text-primary hover:bg-bg-primary bg-bg-tertiary focus-visible:border-primary focus-visible:outline-none focus-visible:bg-bg-secondary"
                       />
                     </div>
                     <div class="absolute right-0 w-5/12 space-y-2">
@@ -160,7 +160,7 @@ const userData = parseJwt(jwt.value);
                         placeholder="Group"
                         value="Azubi"
                         disabled
-                        class="block w-full px-2 py-1 border-2 border-gray-200 rounded-md disabled:bg-slate-50 disabled:text-slate-400 disabled:border-slate-200 focus:border-gray-800 focus:outline-none"
+                        class="block w-full px-4 py-2 transition-all duration-150 ease-in border rounded placeholder:text-text-secondary border-bg-primary text-text-primary hover:bg-bg-primary bg-bg-tertiary focus-visible:border-primary focus-visible:outline-none focus-visible:bg-bg-secondary"
                       />
                     </div>
                   </div>
@@ -203,11 +203,12 @@ const userData = parseJwt(jwt.value);
 
                 <select
                   v-model="$colorMode.preference"
-                  class="px-5 py-2 border border-gray-700 rounded-lg dark:bg-gray-600"
+                  class="block px-4 py-2 transition-all duration-150 ease-in border rounded-lg placeholder:text-text-secondary border-primary text-text-primary hover:bg-bg-primary bg-bg-tertiary focus-visible:outline-none focus-visible:bg-bg-secondary"
                 >
-                  <option value="system">System</option>
                   <option value="light">Light</option>
                   <option value="dark">Dark</option>
+                  <option value="cosmic">Cosmic</option>
+                  <option value="matdark">Material Dark</option>
                 </select>
               </div>
             </div>
@@ -222,7 +223,7 @@ const userData = parseJwt(jwt.value);
               <div class="absolute right-0 flex items-center h-full">
                 <div>
                   <select
-                    class="px-5 py-2 border border-gray-700 rounded-lg dark:bg-gray-600"
+                    class="block px-4 py-2 transition-all duration-150 ease-in border rounded-lg placeholder:text-text-secondary border-primary text-text-primary hover:bg-bg-primary bg-bg-tertiary focus-visible:outline-none focus-visible:bg-bg-secondary"
                   >
                     <option value="">English</option>
                     <option value="">Deutsch</option>
