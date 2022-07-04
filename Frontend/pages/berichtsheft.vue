@@ -277,18 +277,6 @@ const formatter = ref({
 
 <script>
 export default {
-  // setup() {
-  //   // const dateValue = ref([]);
-  //   const formatter = ref({
-  //     date: 'DD MMM YYYY',
-  //     month: 'MMM'
-  //   });
-
-  //   return {
-  //     // dateValue,
-  //     formatter,
-  //   };
-  // },
   data() {
     return {
       week: "",
@@ -340,12 +328,6 @@ export default {
                   )
                 "
               >
-                <!-- <FormKit
-                type="form"
-                id="generateWeeklyReportForm"
-                submit-label="Generate"
-                @submit="teste(date)"
-              > -->
                 <div class="">
                   <FormKit
                     type="text"
@@ -384,32 +366,6 @@ export default {
                     validation-visibility="submit"
                   />
                   <div class="pt-4">
-                    <!-- <FormKit
-                      type="date"
-                      name="von"
-                      placeholder="von"
-                      v-model="from"
-                      
-                      :classes="{
-                        outer: 'mx-2 w-full',
-                        input:
-                          '$reset rounded-sm px-4 py-2 w-full transition-all duration-150 ease-in border placeholder:text-text-secondary border-bg-primary text-text-primary hover:bg-bg-primary bg-bg-tertiary focus-visible:border-primary focus-visible:outline-none focus-visible:bg-bg-secondary',
-                      }"
-                      validation-visibility="submit"
-                    />
-                    <FormKit
-                      type="date"
-                      name="bis"
-                      placeholder="bis"
-                      v-model="to"
-                      
-                      :classes="{
-                        outer: 'mx-2 w-full',
-                        input:
-                          '$reset rounded-sm px-4 py-2 w-full transition-all duration-150 ease-in border placeholder:text-text-secondary border-bg-primary text-text-primary hover:bg-bg-primary bg-bg-tertiary focus-visible:border-primary focus-visible:outline-none focus-visible:bg-bg-secondary',
-                      }"
-                      validation-visibility="submit"
-                    /> -->
                     <litepie-datepicker
                       placeholder="Von wann bis wann geht die Woche?"
                       separator=" - "
@@ -544,42 +500,5 @@ export default {
         </div>
       </div>
     </div>
-    <!-- <FormKit
-      type="form"
-      id="generateWeeklyReportForm"
-      submit-label="Generieren"
-      @submit="GenerateFunc(Week, Year, name)"
-    >
-      <FormKit
-        type="text"
-        name="Week"
-        label="Which Week"
-        placeholder="10"
-        v-model="Week"
-        validation="number|length:1,2"
-        input-class="text-text-primary"
-        class="text-button"
-        :classes="{
-          outer: 'mt-6',
-          input:
-            '$reset text-text-primary bg-button-primary w-22 h-10 pl-2 pr-4 text-sm placeholder-transparent rounded-lg peer sm:text-base focus:outline-none',
-        }"
-        validation-visibility="live"
-      />
-      <FormKit
-        type="text"
-        name="Year"
-        label="Which Year"
-        placeholder="2"
-        v-model="Year"
-        validation="number|matches:1,2,3"
-        :classes="{
-          outer: 'mt-6',
-          input:
-            '$reset text-text-primary bg-button-primary w-22 h-10 pl-2 pr-4 text-sm placeholder-transparent rounded-lg peer sm:text-base focus:outline-none',
-        }"
-        validation-visibility="live"
-      />
-    </FormKit> -->
   </div>
 </template>
