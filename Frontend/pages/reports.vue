@@ -300,8 +300,8 @@ export default {
 <template>
   <div>
     <div class="w-full">
-      <div class="flex flex-col flex-wrap">
-        <div class="w-full px-4 xl:w-1/2">
+      <div class="flex flex-wrap">
+        <div class="w-full px-4 xl:max-w-[50%] relative mb-8">
           <div class="rounded-sm bg-bg-secondary">
             <div class="px-6 py-4 border-b border-bg-primary">
               Berichtsheftwerte
@@ -374,7 +374,7 @@ export default {
                       v-model="date"
                     ></litepie-datepicker>
                   </div>
-                  <div class="relative flex w-full mt-4">
+                  <div class="relative flex w-full mt-4 xl:block 2xl:flex">
                     <span
                       class="align"
                       :class="
@@ -382,7 +382,7 @@ export default {
                       "
                       >Stunden:</span
                     >
-                    <span class="absolute right-2">
+                    <span class="absolute xl:relative 2xl:absolute right-2">
                       <FormKit
                         type="radio"
                         name="Stunden Betrieb"
@@ -496,6 +496,14 @@ export default {
                 </div>
               </FormKit>
             </div>
+          </div>
+        </div>
+        <div class="w-full px-4 xl:max-w-[50%] relative mb-8">
+          <div class="rounded-sm bg-bg-secondary">
+            <div class="px-6 py-4 border-b border-bg-primary">
+              Berichtshefte
+            </div>
+            <div class="px-6 pb-4">List of Reports</div>
           </div>
         </div>
       </div>
