@@ -1,5 +1,6 @@
+const path = require("path");
+
 module.exports = {
-  darkMode: "class",
   content: [
     `components/**/*.{vue,js}`,
     `layouts/**/*.vue`,
@@ -30,23 +31,23 @@ module.exports = {
         },
       },
     }),
-    colors: {
-      primary: "var(--color-primary)",
-      secondary: "var(--color-secondary)",
-      accept: "var(--color-accept)",
-      warning: "var(--color-warning)",
-      danger: "var(--color-danger)",
-      "text-primary": "var(--text-primary)",
-      "text-secondary": "var(--text-secondary)",
-      "text-active": "var(--text-active)",
-      "text-link": "var(--text-link)",
-      "bg-primary": "var(--bg-primary)",
-      "bg-secondary": "var(--bg-secondary)",
-      "bg-tertiary": "var(--bg-tertiary)",
-      "bg-quaternary": "var(--bg-quaternary)",
-      "button-primary": "var(--button-bg-primary)",
-      "button-secondary": "var(--button-bg-secondary)",
-    },
+    // colors: {
+    //   primary: "var(--color-primary)",
+    //   secondary: "var(--color-secondary)",
+    //   accept: "var(--color-accept)",
+    //   warning: "var(--color-warning)",
+    //   danger: "var(--color-danger)",
+    //   "text-primary": "var(--text-primary)",
+    //   "text-secondary": "var(--text-secondary)",
+    //   "text-active": "var(--text-active)",
+    //   "text-link": "var(--text-link)",
+    //   "bg-primary": "var(--bg-primary)",
+    //   "bg-secondary": "var(--bg-secondary)",
+    //   "bg-tertiary": "var(--bg-tertiary)",
+    //   "bg-quaternary": "var(--bg-quaternary)",
+    //   "button-primary": "var(--button-bg-primary)",
+    //   "button-secondary": "var(--button-bg-secondary)",
+    // },
     extend: {
       colors: {
         primary: "var(--color-primary)",
