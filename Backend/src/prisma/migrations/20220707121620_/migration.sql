@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Report" ALTER COLUMN "companytasks" DROP NOT NULL,
+ALTER COLUMN "processtitle" DROP NOT NULL,
+ALTER COLUMN "processbody" DROP NOT NULL,
+ALTER COLUMN "lessons" DROP NOT NULL;

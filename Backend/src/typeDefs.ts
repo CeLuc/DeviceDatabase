@@ -13,6 +13,8 @@ export const typeDefs = gql`
     users: [User]
     vms: [VM]!
     vm(id: ID, hostname: String, ip: String): VM
+    reports: [Report]!
+    report(id: ID): Report
   }
 
   type Mutation {
@@ -40,12 +42,25 @@ export const typeDefs = gql`
       room: String
       roomId: ID
     ): VM
+    addReport(
+      year: Int!
+      week: Int!
+      type: String!
+      date: [String]!
+      companytasks: String
+      processtitle: String
+      processbody: String
+      lessons: String
+      user: String
+      userId: ID!
+    ): Report
     # Delete Mutations
     delPc(id: ID, hostname: String, ip: String): PC
     delNetwork(id: ID, name: String): Network
     delHouse(id: ID, number: String): House
     delRoom(id: ID, name: String): Room
     delVm(id: ID, hostname: String, ip: String): VM
+    delReport(id: ID): Report
     # Authentication Mutation
     signupUser(data: UserCreateInput!): AuthPayLoad!
     loginUser(data: UserLoginInput!): AuthPayLoad!
@@ -103,5 +118,18 @@ export const typeDefs = gql`
   type Network {
     id: ID!
     name: String!
+  }
+
+  type Report {
+    id: ID!
+    year: Int!
+    week: Int!
+    type: String!
+    date: [String]!
+    companytasks: String
+    processtitle: String
+    processbody: String
+    lessons: String
+    user: User!
   }
 `;
