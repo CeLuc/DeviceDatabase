@@ -1,4 +1,5 @@
 const path = require("path");
+const formKitTailwind = require("@formkit/themes/tailwindcss");
 
 module.exports = {
   content: [
@@ -9,7 +10,9 @@ module.exports = {
     `plugins/**/*.{js,ts}`,
     `App.{js,ts,vue}`,
     `app.{js,ts,vue}`,
+    `formkit.config.{js,ts}`,
   ],
+  plugins: [formKitTailwind],
   theme: {
     typography: ({ theme }) => ({
       default: {
