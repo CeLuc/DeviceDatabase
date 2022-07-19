@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 async function main() {
   const gruberl = await prisma.User.upsert({
     where: { username: "gruberl" },
-    updated: {},
+    update: {},
     create: {
       username: "gruberl",
       name: "Gruber Lucas",
@@ -14,7 +14,7 @@ async function main() {
   });
   const hertelj = await prisma.User.upsert({
     where: { username: "hertelj" },
-    updated: {},
+    update: {},
     create: {
       username: "hertelj",
       name: "Hertel Jan-Oliver",
@@ -23,7 +23,7 @@ async function main() {
   });
   const karlc = await prisma.User.upsert({
     where: { username: "karlc" },
-    updated: {},
+    update: {},
     create: {
       username: "karlc",
       name: "Karl Cevin",
