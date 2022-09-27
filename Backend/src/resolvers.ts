@@ -84,7 +84,7 @@ export const resolvers = {
               network: true,
               room: true,
             },
-          },
+           },
           rooms: {
             include: {
               pcs: {
