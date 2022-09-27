@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from "nuxt";
 import tailwindTypography from "@tailwindcss/typography";
+import customForms from "@tailwindcss/custom-forms";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -9,6 +10,7 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@nuxtjs-alt/axios",
     "@nuxtjs-alt/pinia",
+    "@formkit/nuxt",
   ],
 
   // disable generating the shim for *.vue files because volar overtake-mode is activated
@@ -36,7 +38,7 @@ export default defineNuxtConfig({
     configPath: "./tailwind.config.js",
     exposeConfig: true,
     config: {
-      plugins: [tailwindTypography],
+      plugins: [tailwindTypography, customForms],
     },
     injectPosition: 0,
     viewer: true,

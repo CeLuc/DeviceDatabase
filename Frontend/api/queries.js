@@ -18,6 +18,7 @@ export const GET_PCS = gql`
     }
   }
 `;
+
 export const GET_NETWORKS = gql`
   query get_networks {
     network {
@@ -33,6 +34,20 @@ export const GET_NETWORKS = gql`
       house {
         number
       }
+    }
+  }
+`;
+
+export const GET_REPORTS = gql`
+  query get_reports {
+    report {
+      id
+      year
+      week
+      type
+      companytasks
+      processtitle
+      processbody
     }
   }
 `;

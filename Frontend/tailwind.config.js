@@ -1,5 +1,7 @@
+const path = require("path");
+const formKitTailwind = require("@formkit/themes/tailwindcss");
+
 module.exports = {
-  darkMode: "class",
   content: [
     `components/**/*.{vue,js}`,
     `layouts/**/*.vue`,
@@ -8,7 +10,9 @@ module.exports = {
     `plugins/**/*.{js,ts}`,
     `App.{js,ts,vue}`,
     `app.{js,ts,vue}`,
+    `formkit.config.{js,ts}`,
   ],
+  plugins: [formKitTailwind],
   theme: {
     typography: ({ theme }) => ({
       default: {
@@ -46,6 +50,8 @@ module.exports = {
       "bg-quaternary": "var(--bg-quaternary)",
       "button-primary": "var(--button-bg-primary)",
       "button-secondary": "var(--button-bg-secondary)",
+      black: "#000",
+      white: "#FFF",
     },
     extend: {
       colors: {

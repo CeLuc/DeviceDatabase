@@ -84,7 +84,7 @@ export const resolvers = {
               network: true,
               room: true,
             },
-          },
+           },
           rooms: {
             include: {
               pcs: {
@@ -177,6 +177,23 @@ export const resolvers = {
         },
       });
     },
+    reports: () => {
+      return prisma.report.findMany({
+        include: {
+          user: true,
+        },
+      });
+    },
+    report: (parent: any, { id }: any) => {
+      return prisma.report.findUnique({
+        where: {
+          id: id,
+        },
+        include: {
+          user: true,
+        },
+      });
+    },
   },
 
   Mutation: {
@@ -237,6 +254,41 @@ export const resolvers = {
       });
       if (room) {
         return room;
+      }
+    },
+    addReport: async (
+      _: any,
+      {
+        year,
+        week,
+        type,
+        date,
+        companytasks,
+        processtitle,
+        processbody,
+        lessons,
+        user,
+        userId,
+      }: any
+    ) => {
+      const report = await prisma.Report.create({
+        data: {
+          year: year,
+          week: week,
+          type: type,
+          date: date,
+          companytasks: companytasks,
+          processtitle: processtitle,
+          processbody: processbody,
+          lessons: lessons,
+          user: { connect: { id: userId } },
+        },
+        include: {
+          user: true,
+        },
+      });
+      if (report) {
+        return report;
       }
     },
     // Delete Mutations

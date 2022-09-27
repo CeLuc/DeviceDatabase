@@ -1,13 +1,9 @@
-<script setup>
-const name = "hallo";
-</script>
-
 <template>
   <header class="px-4 py-4 shadow-lg bg-bg-secondary">
     <div class="flex flex-row items-center header-content">
       <form action="#">
         <div class="relative hidden md:flex">
-          <div
+          <!-- <div
             class="absolute top-0 left-0 inline-flex items-center justify-center w-10 h-full text-text-secondary"
           >
             <svg
@@ -21,9 +17,9 @@ const name = "hallo";
             >
               <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-          </div>
+          </div> -->
 
-          <InputSearch />
+          <!-- <InputSearch /> -->
         </div>
         <div class="flex md:hidden">
           <a
