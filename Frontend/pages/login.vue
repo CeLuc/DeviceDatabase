@@ -66,8 +66,11 @@ export default {
                         :classes="{
                           outer: 'mb-8',
                           label: 'mb-1 text-sm text-text-secondary',
-                          input:
-                            '$reset rounded text-base px-4 py-3 w-full transition-all mt-4 duration-150 ease-in border placeholder:text-text-secondary border-bg-primary text-text-primary hover:bg-bg-primary bg-bg-tertiary focus-visible:border-primary focus-visible:outline-none focus-visible:bg-bg-secondary',
+                          input: `$reset rounded text-base px-4 py-3 w-full transition-all mt-4 duration-150 ease-in border placeholder:text-text-secondary border-danger text-text-primary hover:bg-bg-primary bg-bg-tertiary focus-visible:border-danger focus-visible:outline-none focus-visible:bg-bg-secondary ${
+                            password.length >= 4
+                              ? 'valid:border-accept valid:focus-visible:border-accept'
+                              : ''
+                          }`,
                         }"
                         validation="required|length:4"
                         validation-visibility="live"
