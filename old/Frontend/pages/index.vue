@@ -7,4 +7,4 @@ definePageMeta({
   <div>
     <div class="font-bold">Home</div>
   </div>
-</template>
+</template> Punkt aus Ende strich fertig is das inder gsicht
