@@ -6,5 +6,8 @@ node_modules
 .output
 .env
 dist
+<<<<<<< HEAD
 yarn.lock
 package.lock
+=======
+>>>>>>> 7e879c0 (init new nuxt project)
