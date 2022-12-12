@@ -3,12 +3,24 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model Example {
-  id          String @id @default(uuid())
-  description String
-  details     String
+model User {
+  id String @id @default(uuid())
+  firstname String
+  lastname String
+  username String @unique
+  password String
+  profilepicture String?
+}
+
+model PC {
+  id String @id @default(uuid())
+  macaddr String
+  hostname String
+  Seriennummer String @unique
+  domain String
+  
 }
