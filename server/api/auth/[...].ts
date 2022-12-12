@@ -1,14 +1,12 @@
+import CredentialsProvider from 'next-auth/providers/credentials'
 import { NuxtAuthHandler } from '#auth'
-import CredentialsProvider from "next-auth/providers/credentials"
+const config = useRuntimeConfig()
 
-// import GithubProvider from 'next-auth/providers/github'
 export default NuxtAuthHandler({
+  // A secret string you define, to ensure correct encryption
+  secret: 'your-secret-here',
   providers: [
-    // GithubProvider({
-      //    clientId: 'enter-your-client-id-here',
-      //    clientSecret: 'enter-your-client-secret-here'
-      // })
-    // @ts-ignore Import is exsported on .default during SSR, so we need to call it this way. May be fixed via Vite at some point
+    // @ts-ignore Import is exported on .default during SSR, so we need to call it this way. May be fixed via Vite at some point
     CredentialsProvider.default({
       // The name to display on the sign in form (e.g. 'Sign in with...')
       name: 'Credentials',
@@ -17,29 +15,33 @@ export default NuxtAuthHandler({
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: { label: "username", type: "text", placeholder: "jsmith" },
-        password: {  label: "password", type: "password" }
+        username: { label: 'Username', type: 'text', placeholder: '(hint: jsmith)' },
+        password: { label: 'Password', type: 'password', placeholder: '(hint: hunter2)' }
       },
-      async authorize(credentials: any) {
+      async authorize (credentials: any) {
         // You need to provide your own logic here that takes the credentials
         // submitted and returns either a object representing a user or value
         // that is false/null if the credentials are invalid.
-        // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-        // You can also use the `req` object to obtain additional parameters
-        // (i.e., the request IP address)
-        const res = await fetch("/api/auth/login", {
+        // NOTE: THE BELOW LOGIC IS NOT SAFE OR PROPER FOR AUTHENTICATION!
+        const payload = {
+          username: credentials.username,
+          password: credentials.password,
+        };
+
+        const res = await fetch(config.originUrl + '/api/auth/login', {
           method: 'POST',
-          body: credentials,
-          headers: { "Content-Type": "application/json" }
-        })
+          body: JSON.stringify(payload),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        });
         const user = await res.json()
 
-        // If no error and we have user data, return it
         if (res.ok && user) {
           return user
+        } else {
+          return null
         }
-        // Return null if user data could not be retrieved
-        return null
       }
     })
   ]

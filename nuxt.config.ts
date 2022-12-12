@@ -1,13 +1,16 @@
 export default defineNuxtConfig({
   runtimeConfig: {
-    version: '0.0.1'
+    version: '0.0.1',
+    databaseUrl: process.env.DATABASE_URL,
+    originUrl: process.env.ORIGIN_URL
   },
   modules: ['@nuxtjs/tailwindcss', 'nuxt-svgo', '@huntersofbook/naive-ui-nuxt', '@sidebase/nuxt-auth'],
   extends: ['@sidebase/nuxt-prisma'],
 
   auth: {
     isEnabled: true,
-    origin: 'http://localhost:3000',
+    origin: process.env.ORIGIN_URL,
+    
     enableGlobalAppMiddleware: true
   }
 })
