@@ -1,11 +1,18 @@
 <template>
-  <div>
-    <p>Sign-In Options:</p>
-    <button @click="signIn('credentials', { username: 'muellerh', password: 'asdf' })">Username and Password</button>
+  <div class="flex text-dark-neutral w-full h-screen">
+    <div class="w-full xl:w-3/12 bg-dark-grey">
+      <div class="pl-5 pt-5">
+        <UILoginForm />
+      </div>
+    </div>
+    <div class="hidden w-9/12 bg-dark-bg justify-center items-center xl:flex"><IllustrationsLogin /></div>
   </div>
 </template>
 
 <script setup lang="ts">
-  definePageMeta({ auth: false })
+  definePageMeta({
+    layout: false,
+    auth: false
+  })
   const { signIn } = useSession()
 </script>
