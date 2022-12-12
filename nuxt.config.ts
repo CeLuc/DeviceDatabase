@@ -1,10 +1,11 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss'],
+import { setAbsoluteSqliteDatabaseUrlForPrisma } from '@sidebase/nuxt-prisma'
 
+setAbsoluteSqliteDatabaseUrlForPrisma()
+
+export default defineNuxtConfig({
   runtimeConfig: {
-    apiSecret: process.env.API_SECRET,
-    jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECRET,
-    jwtRefreshSecret: process.env.JWT_REFRESH_TOKEN_SECRET
-  }
+    version: '0.0.1'
+  },
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-svgo', '@huntersofbook/naive-ui-nuxt'],
+  extends: ['@sidebase/nuxt-prisma']
 })
