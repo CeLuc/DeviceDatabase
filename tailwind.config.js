@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "components/**/*.{vue,js,ts}",
     "layouts/**/*.vue",
@@ -33,6 +34,7 @@ module.exports = {
       'light-text-light': '#99B2C6',
       'light-neutral': '#FFFFFF',
       'light-bg': '#F1F4FA',
+      'transparent': 'transparent'
     },
     fontFamily: {
       DMSans: ['DMSans', 'sans-serif'],
@@ -44,8 +46,13 @@ module.exports = {
       '4': '1.25rem',
       '5': '1.563rem',
       '6': '1.875rem',
+      '7': '2.5rem',
+      '8': '3.125rem',
+      '9': '3.75rem'
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')
+  ],
 };
