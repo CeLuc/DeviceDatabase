@@ -751,6 +751,15 @@
     vite-plugin-checker "^0.5.1"
     vue-bundle-renderer "^1.0.0"
 
+"@nuxtjs/color-mode@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/color-mode/-/color-mode-3.2.0.tgz#b5b6a3931a6ddd9646c3aad121d357c635792eb7"
+  integrity sha512-isDR01yfadopiHQ/VEVUpyNSPrk5PCjUHS4t1qYRZwuRGefU4s9Iaxf6H9nmr1QFzoMgTm+3T0r/54jLwtpZbA==
+  dependencies:
+    "@nuxt/kit" "^3.0.0"
+    lodash.template "^4.5.0"
+    pathe "^1.0.0"
+
 "@nuxtjs/eslint-config-typescript@^12.0.0":
   version "12.0.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/eslint-config-typescript/-/eslint-config-typescript-12.0.0.tgz#eaa36d8a8eb1c35a918f606e32613e0726b98c0b"
@@ -931,6 +940,13 @@
   dependencies:
     "@prisma/client" "^4.7.1"
     h3 "^1.0.1"
+
+"@tailwindcss/forms@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.3.tgz#e4d7989686cbcaf416c53f1523df5225332a86e7"
+  integrity sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==
+  dependencies:
+    mini-svg-data-uri "^1.2.3"
 
 "@testing-library/dom@^8.5.0":
   version "8.19.0"
@@ -4709,6 +4725,11 @@ min-indent@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/min-indent/-/min-indent-1.0.1.tgz#a63f681673b30571fbe8bc25686ae746eefa9869"
   integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
+
+mini-svg-data-uri@^1.2.3:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz#8ab0aabcdf8c29ad5693ca595af19dd2ead09939"
+  integrity sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==
 
 minimatch@^3.0.4, minimatch@^3.1.1, minimatch@^3.1.2:
   version "3.1.2"

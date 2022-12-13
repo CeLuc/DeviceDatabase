@@ -3,7 +3,7 @@
     "source.fixAll.eslint": true
   },
   "[vue]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[js]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
