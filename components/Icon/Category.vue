@@ -7,9 +7,7 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
   >
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>@1xIconly/Bold/Category</title>
-    <desc>Created with Sketch.</desc>
+    <title>Iconly/Bold/Category</title>
     <g
       id="Iconly/Bold/Category"
       stroke="none"

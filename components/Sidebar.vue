@@ -9,6 +9,7 @@
       <ul class="flex flex-wrap pr-6 space-y-1">
         <li
           v-for="item in SidebarItems"
+          @click="handleClick(item.link)"
           class="relative flex w-full h-8 duration-100 cursor-pointer group transition-color hover:duration-300"
           :class="{
             'fill-light-primary/90 text-light-primary/90 dark:fill-dark-primary/90 dark:text-dark-primary/90 hover:fill-light-primary hover:text-light-primary hover:dark:fill-dark-primary hover:dark:text-dark-primary':
@@ -24,12 +25,12 @@
           <div class="bottom-0 flex ml-6">
             <div class="my-auto">
               <IconCategory v-if="item.icon == 'category'" />
-              <IconCategory v-else-if="item.icon == 'chart'" />
-              <IconCategory v-else-if="item.icon == 'ticket'" />
-              <IconCategory v-else-if="item.icon == 'calendar'" />
-              <IconCategory v-else-if="item.icon == 'document'" />
-              <IconCategory v-else-if="item.icon == 'activity'" />
-              <IconCategory v-else-if="item.icon == 'notification'" />
+              <IconChart v-else-if="item.icon == 'chart'" />
+              <IconTicket v-else-if="item.icon == 'ticket'" />
+              <IconDocument v-else-if="item.icon == 'calendar'" />
+              <IconCalendar v-else-if="item.icon == 'document'" />
+              <IconActivity v-else-if="item.icon == 'activity'" />
+              <IconNotification v-else-if="item.icon == 'notification'" />
             </div>
             <div class="my-auto ml-3">
               <p class="text-xl leading-none">{{ item.name }}</p>
@@ -38,11 +39,18 @@
         </li>
       </ul>
     </div>
+    <div class="absolute bottom-0 flex w-full">
+      <div class="px-5 mx-auto">d</div>
+    </div>
   </div>
 </template>
 
 <script setup>
 const route = useRoute();
+
+const handleClick = async (link) => {
+  await navigateTo({ path: link });
+};
 
 const SidebarItems = [
   {

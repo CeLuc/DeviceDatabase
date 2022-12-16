@@ -24,8 +24,14 @@
       <AuthSubmitButton />
     </div>
     <div class="mt-5 text-center">
-    <a href="/register" class="dark:text-dark-primary text-light-primary ">Or register a new account</a>
+      <NuxtLink
+        to="/register"
+        class="dark:text-dark-primary text-light-primary"
+      >
+        Or register a new account
+      </NuxtLink>
     </div>
+    {{test}}
   </form>
 </template>
 
@@ -34,8 +40,13 @@ const { signIn } = useSession();
 const loginData = reactive({
   username: "",
   password: "",
-  remember: false,
+  remember: false
 });
+
+const test = ref('init')
+if(registerData.password.length < 8){
+  test = "pw to short"
+}
 
 // const handleSubmit = () => {
 //   signIn("credentials", {
@@ -52,6 +63,6 @@ const loginData = reactive({
 //   });
 // };
 const handleSubmit = () => {
-  signIn("credentials", loginData)
-}
+  signIn("credentials", loginData);
+};
 </script>

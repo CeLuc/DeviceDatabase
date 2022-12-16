@@ -3,24 +3,28 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider     = "mongodb"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model User {
-  id String @id @default(uuid())
-  firstname String
-  lastname String
-  username String @unique
-  password String
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  firstname      String
+  lastname       String
+  username       String  @unique
+  password       String
   profilepicture String?
+  settings       Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model PC {
-  id String @id @default(uuid())
-  macaddr String
-  hostname String
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  macaddr      String
+  hostname     String
   Seriennummer String @unique
-  domain String
-
+  domain       String
 }

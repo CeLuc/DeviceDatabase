@@ -40,6 +40,7 @@ module.exports = {
       DMSans: ['DMSans', 'sans-serif'],
     },
     spacing: {
+      '0': '0rem',
       '1': '0.313rem',
       '2': '0.625rem',
       '3': '0.938rem',

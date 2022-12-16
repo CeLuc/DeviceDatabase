@@ -1,26 +1,26 @@
 <template>
   <div>
     <label
-      :for="props.label"
-      v-if="props.label"
+      :for="label"
+      v-if="label"
       class="block mb-1 ml-px font-medium"
     >
-      {{ props.label }}
+      {{ label }}
     </label>
     <input
-      :id="props.label"
-      :type="props.type"
-      @input="(event) => emits('update:modelValue', event.target.value)"
+      :id="label"
+      :type="type"
+      @input="$emit('update:modelValue', $event.target.value)"
       class="w-full h-8 pl-3 border-0 rounded-md focus:ring-0 focus:outline-none text-light-text dark:text-dark-neutral dark:placeholder:text-dark-neutral/70 dark:bg-dark-bg bg-light-bg placeholder:text-light-text/70"
-      :placeholder="props.placeholder"
-      :value="props.modelValue"
+      :placeholder="placeholder"
+      :value="modelValue"
     />
   </div>
 </template>
 
 <script setup>
-const emits = defineEmits(["update:modelValue"]);
-const props = defineProps({
+defineEmits(["update:modelValue"]);
+defineProps({
   modelValue: {
     type: String,
     required: true,

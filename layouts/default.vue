@@ -1,6 +1,8 @@
 <template>
   <div class="flex">
     <Sidebar />
-    <slot />
+    <main class="pt-6 pl-6">
+      <slot />
+    </main>
   </div>
 </template>
