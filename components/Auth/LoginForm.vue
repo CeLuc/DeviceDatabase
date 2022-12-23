@@ -31,7 +31,6 @@
         Or register a new account
       </NuxtLink>
     </div>
-    {{test}}
   </form>
 </template>
 
@@ -42,11 +41,6 @@ const loginData = reactive({
   password: "",
   remember: false
 });
-
-const test = ref('init')
-if(registerData.password.length < 8){
-  test = "pw to short"
-}
 
 // const handleSubmit = () => {
 //   signIn("credentials", {

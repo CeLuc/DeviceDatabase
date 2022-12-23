@@ -1,14 +1,12 @@
 <template>
-  <form @keyup.enter="handleSubmit" :onSubmit="handleSubmit">
-    <p>Errror</p>
-    {{regError}}
-    <p>Errror</p>
+  <Form :validation-schema="schema" @submit="onSubmit" @invalid-submit="onInvalidSubmit">
     <div>
       <UIInput
         v-model="registerData.firstname"
         placeholder="firstname"
         label="Firstname"
         class="mb-5"
+        name="firstname"
       />
       <UIInput
         v-model="registerData.lastname"
@@ -36,6 +34,7 @@
         label="Repeat Password"
         class="mb-5"
       />
+
     </div>
     <div>
       <UIInputCheckbox
@@ -43,22 +42,40 @@
         label="By creating an account you agree to our terms of use and privacy policy. (non existing)"
         class="mb-5"
       />
-      {{registerData.test}}
     </div>
     <div>
       <input
         type="submit"
-        class="mb-5 w-full h-8 rounded-md focus:ring-0 hover:dark:bg-priamry/30 hover:bg-light-primary/70 dark:bg-dark-primary bg-light-primary"
+        class="w-full h-8 mb-5 rounded-md focus:ring-0 hover:dark:bg-priamry/30 hover:bg-light-primary/70 dark:bg-dark-primary bg-light-primary"
         value="Create account"
       />
     </div>
-  </form>
+  </Form>
 </template>
 
 <script setup>
+import * as yup from 'yup'
+import YupPassword from 'yup-password'
+YupPassword(yup)
+
 const { signIn } = useSession();
-const agb = reactive(false)
-const regError = ref('')
+
+function onSubmit(values){
+  alert(JSON.stringify(values, null ,2))
+}
+
+function onInvalidSubmit() {
+  const submitBtn = document.querySelector('.submit-btn');
+  submitBtn.classList.add('invalid');
+  setTimeout(() => {
+    submitBtn.classList.remove('invalid');
+  }, 1000);
+}
+
+const schema = yup.object({
+  firstname: yup.string().required('Fistname is required'),
+})
+
 const registerData = reactive({
   firstname: "",
   lastname: "",
@@ -66,7 +83,6 @@ const registerData = reactive({
   password: "",
   repeatPassword: "",
 });
-
 const handleSubmit = async () => {
   // if(!registerData.firstname || !registerData.lastname || !registerData.username || !registerData.password || !registerData.repeatPassword){
   //   regError = "01"
@@ -76,19 +92,17 @@ const handleSubmit = async () => {
   //   regError = "02"
   //   return regError
   // }
-  if(!agb){
-    regError = "03"
-    console.error(regError);
-    return regError
-  }
 
-  const { data, pending, error, refresh } = await useFetch('/api/auth/register', {
-    method: 'POST',
-    body: registerData,
-    onResponse({request, response, options}){
-      console.log(response._data);
-      return response._data
+  const { data, pending, error, refresh } = await useFetch(
+    "/api/auth/register",
+    {
+      method: "POST",
+      body: registerData,
+      onResponse({ request, response, options }) {
+        console.log(response._data);
+        return response._data;
+      },
     }
-  })
+  );
 };
 </script>

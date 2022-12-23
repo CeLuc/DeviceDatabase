@@ -27,6 +27,9 @@
     "@vitejs/plugin-vue": "^3.2.0",
     "@vitest/coverage-c8": "^0.25.6",
     "@vitest/ui": "^0.25.6",
+    "@vueuse/core": "^9.7.0",
+    "@vueuse/integrations": "^9.7.0",
+    "async-validator": "^4.2.5",
     "dayjs": "^1.11.7",
     "jsdom": "^20.0.3",
     "nuxt": "3.0.0",
@@ -42,6 +45,13 @@
   "dependencies": {
     "@prisma/client": "^4.7.1",
     "@sidebase/nuxt-prisma": "^0.1.0",
-    "bcrypt": "^5.1.0"
+    "@vueuse/nuxt": "^9.7.0",
+    "add": "^2.0.6",
+    "bcrypt": "^5.1.0",
+    "nuxt-validate": "^1.0.1",
+    "vee-validate": "^4.7.3",
+    "yarn": "^1.22.19",
+    "yup": "^0.32.11",
+    "yup-password": "^0.2.2"
   }
 }

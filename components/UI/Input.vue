@@ -1,10 +1,6 @@
 <template>
   <div>
-    <label
-      :for="label"
-      v-if="label"
-      class="block mb-1 ml-px font-medium"
-    >
+    <label :for="label" v-if="label" class="block mb-1 ml-px font-medium">
       {{ label }}
     </label>
     <input
@@ -15,10 +11,14 @@
       :placeholder="placeholder"
       :value="modelValue"
     />
+    <p class="help-message" v-show="errorMessage || meta.valid">
+      {{ errorMessage || successMessage }}
+    </p>
   </div>
 </template>
 
 <script setup>
+import { useField } from "vee-validate";
 defineEmits(["update:modelValue"]);
 defineProps({
   modelValue: {
@@ -37,5 +37,17 @@ defineProps({
     type: String,
     default: null,
   },
+});
+
+const name = toRef(props, "placeholder");
+
+const {
+  value: modelValue,
+  errorMessage,
+  handleBlur,
+  handleChange,
+  meta,
+} = useField(name, undefined, {
+  initialValue: "",
 });
 </script>

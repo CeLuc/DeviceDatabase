@@ -22,7 +22,7 @@ model User {
 }
 
 model PC {
-  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
   macaddr      String
   hostname     String
   Seriennummer String @unique
