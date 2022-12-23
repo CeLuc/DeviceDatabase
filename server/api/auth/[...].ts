@@ -23,15 +23,6 @@ export default NuxtAuthHandler({
           placeholder: "(hint: hunter2)",
         },
       },
-      // profile(profile, tokens) {
-      //   return {
-      //     id: String,
-      //     username: String,
-      //     firstname: String,
-      //     lastname: String,
-      //     settings: JSON,
-      //   }
-      // },
       async authorize(credentials: any) {
         const payload = {
           username: credentials.username,
@@ -66,16 +57,16 @@ export default NuxtAuthHandler({
        if (account && user) {
          token.user = user
        }
- 
+
        return token
      },
-     
+
      // Session retuned by useSession and getSession
      session: ({ token, session }) => {
        if (token) {
          session.user = token.user
        }
- 
+
        return session
      },
    },
