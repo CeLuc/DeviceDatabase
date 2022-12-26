@@ -10,7 +10,7 @@
     </div>
     <div class="items-center justify-center hidden w-9/12 xl:flex">
       <IllustrationsLoginLight v-if="colorMode.value == 'light'" />
-      <IllustrationsLoginDark v-else/>
+      <IllustrationsLoginDark v-else />
     </div>
   </div>
 </template>

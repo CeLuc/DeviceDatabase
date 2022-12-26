@@ -23,11 +23,8 @@ model User {
 }
 
 model PC {
-<<<<<<< HEAD
-  id             String  @id @default(auto()) @map("_id") @db.ObjectId
-=======
+  // id             String  @id @default(auto()) @map("_id") @db.ObjectId
   id           String @id @default(uuid())
->>>>>>> 1855e4d (swtiched to psql)
   macaddr      String
   hostname     String
   Seriennummer String @unique
