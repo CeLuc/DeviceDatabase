@@ -19,7 +19,7 @@
     "typescript",
     "vue"
   ],
-  "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
+  "tailwindCSS.experimental.configFile": "./tailwind.config.js",
   "files.associations": {
     "*.css": "tailwindcss"
   },
