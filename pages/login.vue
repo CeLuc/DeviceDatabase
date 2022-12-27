@@ -9,15 +9,13 @@
       </div>
     </div>
     <div class="items-center justify-center hidden w-9/12 xl:flex">
-      <IllustrationsLoginLight v-if="colorMode.value == 'light'" />
+      <IllustrationsLoginLight v-if="$colorMode.value == 'light'" />
       <IllustrationsLoginDark v-else />
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-const colorMode = useColorMode();
-
+<script setup>
 definePageMeta({
   auth: false,
   layout: false,
