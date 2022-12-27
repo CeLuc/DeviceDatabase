@@ -1,8 +1,5 @@
 {
   // TailwindCSS:
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
   "tailwindCSS.experimental.configFile": "./tailwind.config.js",
 
   // VUE AND NUXT

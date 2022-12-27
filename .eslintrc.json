@@ -6,7 +6,10 @@
     "no-unused-vars": "warn",
     "import/no-unresolved": "off",
     "comma-dangle": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "no-undef": "off",
+    "vue/multi-word-component-names": "off",
+    "import/extensions": "off"
   },
   "parserOptions": {
     "project": ["./tsconfig.json"]
