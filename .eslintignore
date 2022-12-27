@@ -7,3 +7,9 @@ components.d.ts
 .output
 node_modules
 .nuxt
+vitest.config.ts
+tests
+README.md
+LICENSE.md
+package.json
+yarn.lock
