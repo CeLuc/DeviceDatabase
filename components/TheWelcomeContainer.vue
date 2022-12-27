@@ -19,5 +19,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <TheWelcome :last-refreshed-at="lastRefreshedAt" :health-check-data="healthCheckData" />
+  <TheWelcome
+    :last-refreshed-at="lastRefreshedAt"
+    :health-check-data="healthCheckData"
+  />
 </template>

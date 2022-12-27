@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
 
   const searchedUsername = await getUserByUsername(event, username)
 
-  if (searchedUsername) {
+  if (searchedUsername != null) {
     return sendError(
       event,
       createError({ statusCode: 400, statusMessage: 'Username already exists' })
@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
     settings = {
       colorTheme: 'system',
       sidebarCollapsed: false,
-      lang: 'de'
+      lang: 'de',
     }
   }
 
@@ -43,12 +43,12 @@ export default defineEventHandler(async (event) => {
     lastname,
     username,
     password,
-    settings
+    settings,
   }
 
   const user = await createUser(event, userData)
 
   return {
-    body: userTransformer(user)
+    body: userTransformer(user),
   }
 })

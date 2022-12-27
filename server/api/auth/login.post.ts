@@ -15,10 +15,13 @@ export default defineEventHandler(async (event) => {
   }
 
   const user = await getUserByUsername(event, username)
-  if (!user) {
+  if (user == null) {
     return sendError(
       event,
-      createError({ statusCode: 401, statusMessage: 'Username or Password is invalid' })
+      createError({
+        statusCode: 401,
+        statusMessage: 'Username or Password is invalid',
+      })
     )
   }
 
@@ -26,11 +29,14 @@ export default defineEventHandler(async (event) => {
   if (!doesPasswordsMatch) {
     return sendError(
       event,
-      createError({ statusCode: 401, statusMessage: 'Username or Password is invalid' })
+      createError({
+        statusCode: 401,
+        statusMessage: 'Username or Password is invalid',
+      })
     )
   }
 
   return {
-    body: userTransformer(user)
+    body: userTransformer(user),
   }
 })

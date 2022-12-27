@@ -9,26 +9,36 @@ describe('TheWelcome', () => {
       status: 'healthy',
       startupTime: new Date(2000, 1, 1, 13),
       time: new Date(2000, 1, 1, 14),
-      nuxtAppVersion: '0.0.1'
+      nuxtAppVersion: '0.0.1',
     }
 
-    const { getByText } = render(TheWelcome, { props: { healthCheckData, lastRefreshedAt: new Date() } })
+    const { getByText } = render(TheWelcome, {
+      props: { healthCheckData, lastRefreshedAt: new Date() },
+    })
 
     // Ensure some expected text is there:
     getByText('is the productive Nuxt 3 stack.', { exact: false })
 
     // Ensure all expected data is there:
-    getByText(`Server v${healthCheckData.nuxtAppVersion} initialized`, { exact: false })
+    getByText(`Server v${healthCheckData.nuxtAppVersion} initialized`, {
+      exact: false,
+    })
     getByText(`${healthCheckData.time.toLocaleString()}`, { exact: false })
-    getByText(`${healthCheckData.startupTime.toLocaleString()}`, { exact: false })
+    getByText(`${healthCheckData.startupTime.toLocaleString()}`, {
+      exact: false,
+    })
     getByText(`${healthCheckData.nuxtAppVersion}`, { exact: false })
 
     // Error state should not be visible
-    expect(() => getByText('Server initialization failed', { exact: false })).toThrowError()
+    expect(() =>
+      getByText('Server initialization failed', { exact: false })
+    ).toThrowError()
   })
 
   test('displays failure when data is missing', () => {
-    const { getByText } = render(TheWelcome, { props: { healthCheckData: null, lastRefreshedAt: new Date() } })
+    const { getByText } = render(TheWelcome, {
+      props: { healthCheckData: null, lastRefreshedAt: new Date() },
+    })
 
     // Ensure some expected text is there:
     getByText('is the productive Nuxt 3 stack.', { exact: false })

@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
   content: [
@@ -11,14 +10,14 @@ module.exports = {
     'app.{js,ts,vue}',
     'Error.{js,ts,vue}',
     'error.{js,ts,vue}',
-    'content/**/*.md'
+    'content/**/*.md',
   ],
   theme: {
     screens: {
       sm: '480px',
       md: '768px',
       lg: '976px',
-      xl: '1440px'
+      xl: '1440px',
     },
     colors: {
       'dark-primary': '#605CFF',
@@ -34,10 +33,10 @@ module.exports = {
       'light-text-light': '#99B2C6',
       'light-neutral': '#FFFFFF',
       'light-bg': '#F1F4FA',
-      transparent: 'transparent'
+      transparent: 'transparent',
     },
     fontFamily: {
-      DMSans: ['DMSans', 'sans-serif']
+      DMSans: ['DMSans', 'sans-serif'],
     },
     spacing: {
       0: '0rem',
@@ -49,11 +48,9 @@ module.exports = {
       6: '1.875rem',
       7: '2.5rem',
       8: '3.125rem',
-      9: '3.75rem'
+      9: '3.75rem',
     },
-    extend: {}
+    extend: {},
   },
-  plugins: [
-    require('@tailwindcss/forms')
-  ]
+  plugins: [require('@tailwindcss/forms')], // eslint-disable-line global-require
 }

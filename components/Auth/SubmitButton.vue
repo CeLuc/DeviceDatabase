@@ -8,15 +8,15 @@
 </template>
 
 <script setup>
-const emit = defineEmits("function");
+const emit = defineEmits('function')
 defineProps({
   value: {
     type: String,
     required: true,
   },
-});
+})
 
 const handleClick = () => {
-  emit("function");
-};
+  emit('function')
+}
 </script>

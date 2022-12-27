@@ -46,47 +46,47 @@
 </template>
 
 <script setup>
-const route = useRoute();
+const route = useRoute()
 
 const handleClick = async (link) => {
-  await navigateTo({ path: link });
-};
+  await navigateTo({ path: link })
+}
 
 const SidebarItems = [
   {
-    name: "Dashboard",
-    link: "/",
-    icon: "category",
+    name: 'Dashboard',
+    link: '/',
+    icon: 'category',
   },
   {
-    name: "Devices",
-    link: "/devices",
-    icon: "chart",
+    name: 'Devices',
+    link: '/devices',
+    icon: 'chart',
   },
   {
-    name: "Assets",
-    link: "/assets",
-    icon: "ticket",
+    name: 'Assets',
+    link: '/assets',
+    icon: 'ticket',
   },
   {
-    name: "Reports",
-    link: "/reports",
-    icon: "calendar",
+    name: 'Reports',
+    link: '/reports',
+    icon: 'calendar',
   },
   {
-    name: "Documentations",
-    link: "/docs",
-    icon: "document",
+    name: 'Documentations',
+    link: '/docs',
+    icon: 'document',
   },
   {
-    name: "Messages",
-    link: "/messages",
-    icon: "activity",
+    name: 'Messages',
+    link: '/messages',
+    icon: 'activity',
   },
   {
-    name: "Notifications",
-    link: "/notifications",
-    icon: "notification",
+    name: 'Notifications',
+    link: '/notifications',
+    icon: 'notification',
   },
-];
+]
 </script>

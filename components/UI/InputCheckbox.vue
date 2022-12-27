@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-defineEmits(["update:modelValue"]);
+defineEmits(['update:modelValue'])
 defineProps({
   modelValue: {
     type: Boolean,
@@ -26,5 +26,5 @@ defineProps({
     type: String,
     default: null,
   },
-});
+})
 </script>

@@ -34,7 +34,6 @@
         label="Repeat Password"
         class="mb-5"
       />
-
     </div>
     <div>
       <UIInputCheckbox
@@ -58,18 +57,18 @@ import * as yup from 'yup'
 import YupPassword from 'yup-password'
 YupPassword(yup)
 
-const { signIn } = useSession();
+const { signIn } = useSession()
 
-function onSubmit(values){
-  alert(JSON.stringify(values, null ,2))
+function onSubmit(values) {
+  alert(JSON.stringify(values, null, 2))
 }
 
 function onInvalidSubmit() {
-  const submitBtn = document.querySelector('.submit-btn');
-  submitBtn.classList.add('invalid');
+  const submitBtn = document.querySelector('.submit-btn')
+  submitBtn.classList.add('invalid')
   setTimeout(() => {
-    submitBtn.classList.remove('invalid');
-  }, 1000);
+    submitBtn.classList.remove('invalid')
+  }, 1000)
 }
 
 const schema = yup.object({
@@ -77,12 +76,12 @@ const schema = yup.object({
 })
 
 const registerData = reactive({
-  firstname: "",
-  lastname: "",
-  username: "",
-  password: "",
-  repeatPassword: "",
-});
+  firstname: '',
+  lastname: '',
+  username: '',
+  password: '',
+  repeatPassword: '',
+})
 const handleSubmit = async () => {
   // if(!registerData.firstname || !registerData.lastname || !registerData.username || !registerData.password || !registerData.repeatPassword){
   //   regError = "01"
@@ -94,15 +93,15 @@ const handleSubmit = async () => {
   // }
 
   const { data, pending, error, refresh } = await useFetch(
-    "/api/auth/register",
+    '/api/auth/register',
     {
-      method: "POST",
+      method: 'POST',
       body: registerData,
       onResponse({ request, response, options }) {
-        console.log(response._data);
-        return response._data;
+        console.log(response._data)
+        return response._data
       },
     }
-  );
-};
+  )
+}
 </script>
