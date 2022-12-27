@@ -21,7 +21,7 @@ export const getAllUsers = (event: any) => {
   return prisma.user.findMany()
 }
 
-export const getUserByUsername = (event: any, username: string) => {
+export const getUserByUsername = (event: any, username: any) => {
   const prisma = usePrisma(event)
 
   return prisma.user.findUnique({

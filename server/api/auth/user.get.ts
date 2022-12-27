@@ -1,15 +1,20 @@
-import { getAllUsers } from '~/server/db/users'
+import { getUserByUsername } from '~/server/db/users'
 import { userTransformer } from '~/server/transformers/user'
 
 export default defineEventHandler(async (event) => {
-  const users = await getAllUsers(event)
-  const finalUsers: any[] | PromiseLike<any[]> = []
+  const query = getQuery(event)
+  const { username } = query
+  const user = await getUserByUsername(event, username)
 
-  if (users.length >= 1) {
-    users.forEach((object) => {
-      finalUsers.push(userTransformer(object))
-    })
+  if (user == null) {
+    return sendError(
+      event,
+      createError({
+        statusCode: 500,
+        statusMessage: 'User does not exist',
+      })
+    )
   }
 
-  return finalUsers
+  return userTransformer(user)
 })
