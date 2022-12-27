@@ -7,7 +7,3 @@
     </NuxtLayout>
   </div>
 </template>
-
-<script setup>
-const { data } = useSession();
-</script>

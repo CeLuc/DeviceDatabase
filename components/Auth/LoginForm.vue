@@ -1,12 +1,13 @@
 <template>
-  <form :onSubmit="handleSubmit">
-    <div @keyup.enter="handleSubmit">
+  <div @keyup.enter="handleSubmit">
+    <div>
       <UIInput
         v-model="loginData.username"
         placeholder="username"
         label="Username"
         class="mb-5"
       />
+      {{ loginData }}
       <UIInput
         v-model="loginData.password"
         placeholder="*********"
@@ -21,7 +22,7 @@
       />
     </div>
     <div class="mt-6">
-      <AuthSubmitButton />
+      <AuthSubmitButton @function="handleSubmit" value="Log In" />
     </div>
     <div class="mt-5 text-center">
       <NuxtLink
@@ -31,7 +32,7 @@
         Or register a new account
       </NuxtLink>
     </div>
-  </form>
+  </div>
 </template>
 
 <script setup>
@@ -39,23 +40,9 @@ const { signIn } = useSession();
 const loginData = reactive({
   username: "",
   password: "",
-  remember: false
+  remember: false,
 });
 
-// const handleSubmit = () => {
-//   signIn("credentials", {
-//     username: "ne",
-//     password: loginData.password,
-//     redirect: false,
-//   }).then(({ ok, error }) => {
-//     if (error) {
-//       console.log("ok");
-//     } else {
-//       console.log("hallo");
-//       // console.log(error)
-//     }
-//   });
-// };
 const handleSubmit = () => {
   signIn("credentials", loginData);
 };

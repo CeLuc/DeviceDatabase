@@ -1,5 +1,5 @@
 <template>
-  <Form :validation-schema="schema" @submit="onSubmit" @invalid-submit="onInvalidSubmit">
+  <form @submit="handleSubmit">
     <div>
       <UIInput
         v-model="registerData.firstname"
@@ -50,7 +50,7 @@
         value="Create account"
       />
     </div>
-  </Form>
+  </form>
 </template>
 
 <script setup>
