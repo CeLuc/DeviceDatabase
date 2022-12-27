@@ -1,28 +1,11 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[js]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[ts]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "eslint.validate": [
-    "javascript",
-    "typescript",
-    "vue"
-  ],
-  "tailwindCSS.experimental.configFile": "./tailwind.config.js",
+  // TailwindCSS:
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "tailwindCSS.experimental.configFile": "./tailwind.config.js",
+
+  // VUE AND NUXT
   "volar.autoCompleteRefs": true,
-  "nuxt.isNuxtApp": false,
+  "nuxt.isNuxtApp": true
 }

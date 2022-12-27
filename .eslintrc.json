@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "airbnb-base",
+    "prettier",
+    "plugin:vue/vue3-essential",
+    "standard-with-typescript"
+  ],
+  "plugins": ["prettier", "vue"],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn"
+  }
+}
