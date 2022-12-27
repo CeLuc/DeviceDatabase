@@ -8,3 +8,4 @@ components.d.ts
 dist
 .output
 node_modules
+.nuxt

@@ -7,6 +7,6 @@ export const userTransformer = (user: any) => {
     profilepicture: user.profilepicture,
     settings: user.settings,
     createdAt: user.createdAt,
-    updatedAt: user.updatedAt,
-  };
-};
+    updatedAt: user.updatedAt
+  }
+}

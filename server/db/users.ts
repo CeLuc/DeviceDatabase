@@ -1,4 +1,3 @@
-import { Prisma } from '@prisma/client'
 import { usePrisma } from '@sidebase/nuxt-prisma'
 import bcrypt from 'bcrypt'
 

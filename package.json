@@ -49,6 +49,7 @@
     "@vueuse/nuxt": "^9.7.0",
     "add": "^2.0.6",
     "bcrypt": "^5.1.0",
+    "eslint": "^8.30.0",
     "nuxt-validate": "^1.0.1",
     "vee-validate": "^4.7.3",
     "yarn": "^1.22.19",

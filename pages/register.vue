@@ -11,8 +11,9 @@
           <NuxtLink
             to="/login"
             class="dark:text-dark-primary text-light-primary"
-            >Log In</NuxtLink
           >
+            Log In
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -25,11 +26,11 @@
 </template>
 
 <script setup lang="ts">
-const colorMode = useColorMode();
+const colorMode = useColorMode()
 
 definePageMeta({
   auth: false,
   layout: false,
-  colorMode: "system",
-});
+  colorMode: 'system'
+})
 </script>
