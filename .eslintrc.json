@@ -1,0 +1,14 @@
+{
+  "extends": ["airbnb-base", "prettier", "plugin:vue/vue3-essential"],
+  "plugins": ["prettier", "vue"],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn",
+    "import/no-unresolved": "off",
+    "comma-dangle": "off",
+    "import/no-extraneous-dependencies": "off"
+  },
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  }
+}

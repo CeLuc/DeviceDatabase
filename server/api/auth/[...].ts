@@ -1,37 +1,37 @@
-import CredentialsProvider from "next-auth/providers/credentials";
-import GithubProvider from "next-auth/providers/github";
-import { NuxtAuthHandler } from "#auth";
-const config = useRuntimeConfig();
+import CredentialsProvider from 'next-auth/providers/credentials'
+import { NuxtAuthHandler } from '#auth'
+
+const config = useRuntimeConfig()
 
 export default NuxtAuthHandler({
-  secret: "your-secret-here",
+  secret: 'your-secret-here',
   pages: {
-    signIn: "/login",
+    signIn: '/login',
   },
   providers: [
     // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
     CredentialsProvider.default({
-      name: "Credentials",
+      name: 'Credentials',
 
       async authorize(credentials: any) {
         const payload = {
           username: credentials.username,
           password: credentials.password,
-        };
+        }
 
-        const res = await fetch(config.originUrl + "/api/auth/login", {
-          method: "POST",
+        const res = await fetch(`${config.originUrl}/api/auth/login`, {
+          method: 'POST',
           body: JSON.stringify(payload),
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
-        });
-        const user = await res.json();
+        })
+        const user = await res.json()
 
         if (res.ok && user) {
-          return user;
+          return user
         } else {
-          return null;
+          return null
         }
       },
     }),
@@ -43,24 +43,24 @@ export default NuxtAuthHandler({
       account,
       user,
     }: {
-      token: any;
-      account: any;
-      user: any;
+      token: any
+      account: any
+      user: any
     }) => {
       if (account && user) {
-        token.user = user;
+        token.user = user
       }
 
-      return token;
+      return token
     },
 
     // Session retuned by useSession and getSession
     session: ({ token, session }: { token: any; session: any }) => {
       if (token) {
-        session.user = token.user;
+        session.user = token.user
       }
 
-      return session;
+      return session
     },
   },
-});
+})

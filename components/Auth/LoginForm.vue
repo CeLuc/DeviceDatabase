@@ -36,14 +36,14 @@
 </template>
 
 <script setup>
-const { signIn } = useSession();
+const { signIn } = useSession()
 const loginData = reactive({
-  username: "",
-  password: "",
+  username: '',
+  password: '',
   remember: false,
-});
+})
 
 const handleSubmit = () => {
-  signIn("credentials", loginData);
-};
+  signIn('credentials', loginData)
+}
 </script>

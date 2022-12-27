@@ -1,5 +1,6 @@
 import { usePrisma } from '@sidebase/nuxt-prisma'
 
+const runtimeConfig = useRuntimeConfig()
 const startupTime = new Date()
 
 const handler = eventHandler(async (event) => {
@@ -7,14 +8,17 @@ const handler = eventHandler(async (event) => {
   try {
     await prisma.$queryRaw`SELECT 1;`
   } catch (error) {
-    throw createError({ statusCode: 500, statusMessage: 'DB failed initialization check' })
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'DB failed initialization check',
+    })
   }
 
   return {
     status: 'healthy',
     time: new Date(),
     startupTime,
-    nuxtAppVersion: useRuntimeConfig().version || 'unknown'
+    nuxtAppVersion: runtimeConfig.version || 'unknown',
   }
 })
 

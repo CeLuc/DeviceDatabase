@@ -19,6 +19,6 @@
 definePageMeta({
   auth: false,
   layout: false,
-  colorMode: "system",
-});
+  colorMode: 'system',
+})
 </script>

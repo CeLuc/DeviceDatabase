@@ -1,32 +1,32 @@
-import { Prisma } from '@prisma/client'
 import { usePrisma } from '@sidebase/nuxt-prisma'
 import bcrypt from 'bcrypt'
 
-export const createUser = (event, userData) => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const createUser = (event: any, userData: any) => {
   const prisma = usePrisma(event)
 
   const finalUserData = {
     ...userData,
-    password: bcrypt.hashSync(userData.password, 10)
+    password: bcrypt.hashSync(userData.password, 10),
   }
 
   return prisma.user.create({
-    data: finalUserData
+    data: finalUserData,
   })
 }
 
-export const getAllUsers = (event) => {
+export const getAllUsers = (event: any) => {
   const prisma = usePrisma(event)
 
   return prisma.user.findMany()
 }
 
-export const getUserByUsername = (event, username) => {
+export const getUserByUsername = (event: any, username: string) => {
   const prisma = usePrisma(event)
 
   return prisma.user.findUnique({
     where: {
-      username
-    }
+      username,
+    },
   })
 }

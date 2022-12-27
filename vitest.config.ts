@@ -5,13 +5,14 @@ import svgLoader from 'vite-svg-loader'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
+
 const include = [/\.vue$/, /\.vue\?vue/, /\.stories\.ts$/, /\.[tj]s$/]
 
 export default defineConfig({
   resolve: {
     alias: {
       '~': path.resolve(__dirname)
-    }
+    },
   },
   plugins: [
     vue(),
@@ -43,7 +44,7 @@ export default defineConfig({
         // Nuxt 3 framework folders and files sources from directory structure here: https://nuxt.com/docs/guide/directory-structure/nuxt
         'components',
         'composables'
-      ]
-    }
-  }
+      ],
+    },
+  },
 })

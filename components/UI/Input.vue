@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-defineEmits(["update:modelValue"]);
+defineEmits(['update:modelValue'])
 defineProps({
   modelValue: {
     type: String,
@@ -23,15 +23,15 @@ defineProps({
   },
   placeholder: {
     type: String,
-    default: "",
+    default: '',
   },
   type: {
     type: String,
-    default: "text",
+    default: 'text',
   },
   label: {
     type: String,
     default: null,
   },
-});
+})
 </script>
