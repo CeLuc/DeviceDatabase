@@ -3,6 +3,8 @@ import { userTransformer } from '~~/server/transformers/user'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
+  const passwdRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,}$/
 
   const { firstname, lastname, username, password, repeatPassword } = body
   let { settings } = body
@@ -11,13 +13,6 @@ export default defineEventHandler(async (event) => {
     return sendError(
       event,
       createError({ statusCode: 400, statusMessage: 'Invalid params' })
-    )
-  }
-
-  if (password !== repeatPassword) {
-    return sendError(
-      event,
-      createError({ statusCode: 400, statusMessage: 'Passwords do not match' })
     )
   }
 
@@ -30,6 +25,22 @@ export default defineEventHandler(async (event) => {
     )
   }
 
+  if (!passwdRegex.test(password)) {
+    return sendError(
+      event,
+      createError({
+        statusCode: 400,
+        statusMessage: 'Password does not match security requirements',
+      })
+    )
+  }
+
+  if (password !== repeatPassword) {
+    return sendError(
+      event,
+      createError({ statusCode: 400, statusMessage: 'Passwords do not match' })
+    )
+  }
   if (!settings) {
     settings = {
       colorTheme: 'system',
