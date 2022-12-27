@@ -5,6 +5,8 @@ declare module "next-auth" {
       username: String,
       firstname: String,
       lastname: String,
+      profilePicture: String,
+      settings: Json
     }
   }
 }

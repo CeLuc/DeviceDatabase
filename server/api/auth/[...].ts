@@ -1,4 +1,5 @@
 import CredentialsProvider from "next-auth/providers/credentials";
+import GithubProvider from "next-auth/providers/github";
 import { NuxtAuthHandler } from "#auth";
 const config = useRuntimeConfig();
 
@@ -8,21 +9,10 @@ export default NuxtAuthHandler({
     signIn: "/login",
   },
   providers: [
-    // @ts-ignore Import is exported on .default during SSR, so we need to call it this way. May be fixed via Vite at some point
+    // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
     CredentialsProvider.default({
       name: "Credentials",
-      credentials: {
-        username: {
-          label: "Username",
-          type: "text",
-          placeholder: "(hint: jsmith)",
-        },
-        password: {
-          label: "Password",
-          type: "password",
-          placeholder: "(hint: hunter2)",
-        },
-      },
+
       async authorize(credentials: any) {
         const payload = {
           username: credentials.username,
@@ -44,30 +34,33 @@ export default NuxtAuthHandler({
           return null;
         }
       },
-      profile(profile, tokens) {
-        return {
-           profile
-        }
-      },
     }),
   ],
   callbacks: {
     // Props defined here can be accessed in session callback and will be returned by getToken
-     jwt: ({ token, account, user }) => {
-       if (account && user) {
-         token.user = user
-       }
+    jwt: ({
+      token,
+      account,
+      user,
+    }: {
+      token: any;
+      account: any;
+      user: any;
+    }) => {
+      if (account && user) {
+        token.user = user;
+      }
 
-       return token
-     },
+      return token;
+    },
 
-     // Session retuned by useSession and getSession
-     session: ({ token, session }) => {
-       if (token) {
-         session.user = token.user
-       }
+    // Session retuned by useSession and getSession
+    session: ({ token, session }: { token: any; session: any }) => {
+      if (token) {
+        session.user = token.user;
+      }
 
-       return session
-     },
-   },
+      return session;
+    },
+  },
 });
