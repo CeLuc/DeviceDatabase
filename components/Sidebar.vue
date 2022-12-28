@@ -9,6 +9,7 @@
       <ul class="flex flex-wrap pr-6 space-y-1">
         <li
           v-for="item in SidebarItems"
+          :key="item.name"
           @click="handleClick(item.link)"
           class="relative flex w-full h-8 duration-100 cursor-pointer group transition-color hover:duration-300"
           :class="{
@@ -39,17 +40,47 @@
         </li>
       </ul>
     </div>
-    <div class="absolute bottom-0 flex w-full">
-      <div class="px-5 mx-auto">d</div>
+    <div class="absolute flex w-full bottom-6">
+      <div class="flex px-5 mx-auto h-7">
+        <div class="flex items-center w-full h-full">
+          <div class="mr-2 overflow-hidden rounded aspect-square h-7 w-7">
+            <img
+              src="https://picsum.photos/seed/1672221742004/300/300"
+              alt=""
+            />
+          </div>
+          <div class="mr-3">
+            <p class="leading-5">Lucas Gruber</p>
+            <p
+              class="text-sm font-light leading-5 text-light-text/50 dark:text-dark-neutral/50"
+            >
+              Azubi - 2LJ
+            </p>
+          </div>
+          <div>
+            <button @click="handleLogout">
+              <IconLogout
+                width="4"
+                height="4"
+                class="fill-light-text dark:fill-dark-neutral"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 const route = useRoute()
+const { signOut } = useSession()
 
 const handleClick = async (link) => {
   await navigateTo({ path: link })
+}
+const handleLogout = () => {
+  signOut()
 }
 
 const SidebarItems = [
