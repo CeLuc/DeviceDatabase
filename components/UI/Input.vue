@@ -30,8 +30,6 @@
 </template>
 
 <script setup>
-import { integer } from '@vee-validate/rules'
-
 defineEmits(['update:modelValue'])
 defineProps({
   modelValue: {
@@ -54,7 +52,7 @@ defineProps({
     type: String,
   },
   height: {
-    type: integer,
+    type: Number,
   },
 })
 </script>
