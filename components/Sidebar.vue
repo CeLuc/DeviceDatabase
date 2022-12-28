@@ -1,12 +1,32 @@
 <template>
   <div
-    class="relative w-2/12 h-full min-h-screen bg-light-neutral dark:bg-dark-grey"
+    class="relative w-full h-full min-h-screen transition-all duration-500 ease-out bg-light-neutral dark:bg-dark-grey"
+    :class="[!collapsed && width >= 1440 ? 'max-w-[250px]' : 'max-w-[80px]']"
   >
-    <div class="flex mt-9">
-      <h1 class="mx-auto text-3xl font-semibold">Device Database</h1>
+    <div class="flex h-6 mt-9">
+      <h1
+        class="absolute w-fit mx-auto left-0 right-0 text-3xl font-semibold transition-all duration-[0s]"
+        :class="[
+          !collapsed && width >= 1440
+            ? 'opacity-100 delay-500'
+            : 'opacity-0 delay-[0s]',
+        ]"
+      >
+        Device Database
+      </h1>
+      <h1
+        class="absolute w-fit left-0 right-0 mx-auto text-3xl font-semibold transition-all duration-[0s]"
+        :class="[
+          !collapsed && width >= 1440
+            ? 'opacity-0 delay-500'
+            : 'opacity-100 delay-[0s]',
+        ]"
+      >
+        DDB
+      </h1>
     </div>
     <div class="w-full mt-7">
-      <ul class="flex flex-wrap pr-6 space-y-1">
+      <ul class="flex flex-wrap pr-3 space-y-1">
         <li
           v-for="item in SidebarItems"
           :key="item.name"
@@ -23,8 +43,14 @@
             :class="{ hidden: route.fullPath != item.link }"
             class="absolute w-full h-full duration-100 transition-color hover:duration-300 group-hover:bg-light-text-light/10 bg-light-text-light/20 dark:group-hover:bg-dark-neutral/10 rounded-r-md dark:bg-dark-neutral/20"
           />
-          <div class="bottom-0 flex ml-6">
-            <div class="my-auto">
+          <div
+            class="bottom-0 flex"
+            :class="[!collapsed && width >= 1440 ? 'ml-6' : 'w-full ml-3']"
+          >
+            <div
+              class="my-auto"
+              :class="[!collapsed && width >= 1440 ? '' : 'mx-auto']"
+            >
               <IconCategory v-if="item.icon == 'category'" />
               <IconChart v-else-if="item.icon == 'chart'" />
               <IconTicket v-else-if="item.icon == 'ticket'" />
@@ -33,23 +59,49 @@
               <IconActivity v-else-if="item.icon == 'activity'" />
               <IconNotification v-else-if="item.icon == 'notification'" />
             </div>
-            <div class="my-auto ml-3">
+            <div
+              class=""
+              :class="[
+                !collapsed && width >= 1440
+                  ? 'opacity-100 ml-3 my-auto w-auto delay-500'
+                  : 'opacity-0 w-0 delay-[0s]',
+              ]"
+            >
               <p class="text-xl leading-none">{{ item.name }}</p>
             </div>
           </div>
         </li>
       </ul>
     </div>
-    <div class="absolute flex w-full bottom-6">
-      <div class="flex px-5 mx-auto h-7">
-        <div class="flex items-center w-full h-full">
-          <div class="mr-2 overflow-hidden rounded aspect-square h-7 w-7">
+    <div
+      class="absolute flex w-full"
+      :class="[!collapsed && width >= 1440 ? 'bottom-6' : 'bottom-9']"
+    >
+      <div
+        class="flex h-7"
+        :class="[!collapsed && width >= 1440 ? 'px-5' : 'mx-auto']"
+      >
+        <div
+          class="flex items-center w-full h-full"
+          :class="[!collapsed && width >= 1440 ? '' : 'flex-wrap']"
+        >
+          <div
+            class="overflow-hidden rounded aspect-square h-7 w-7"
+            :class="[!collapsed && width >= 1440 ? 'mr-2' : 'mx-auto']"
+          >
             <img
               src="https://picsum.photos/seed/1672221742004/300/300"
               alt=""
             />
           </div>
-          <div class="mr-3">
+          <div
+            class="mr-3 duration-[0s]"
+            :class="[
+              !collapsed && width >= 1440
+                ? 'scale-100 h-auto mr-3 delay-500'
+                : 'scale-0 h-0 delay-[0s]',
+            ]"
+          >
             <p class="leading-5">Lucas Gruber</p>
             <p
               class="text-sm font-light leading-5 text-light-text/50 dark:text-dark-neutral/50"
@@ -57,12 +109,10 @@
               Azubi - 2LJ
             </p>
           </div>
-          <div>
+          <div :class="[!collapsed && width >= 1440 ? '' : 'mx-auto mt-4']">
             <button @click="handleLogout">
               <IconLogout
-                width="4"
-                height="4"
-                class="fill-light-text dark:fill-dark-neutral"
+                class="w-4 h-4 fill-light-text dark:fill-dark-neutral"
               />
             </button>
           </div>
@@ -75,6 +125,8 @@
 <script setup>
 const route = useRoute()
 const { signOut } = useSession()
+const { width } = useWindowSize()
+const collapsed = useState('collapsed', () => false)
 
 const handleClick = async (link) => {
   await navigateTo({ path: link })
