@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
   ],
-  extends: ['@sidebase/nuxt-prisma'],
+  extends: ['@sidebase/core', '@sidebase/nuxt-prisma'],
 
   auth: {
     isEnabled: true,
