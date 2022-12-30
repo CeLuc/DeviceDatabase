@@ -1,5 +1,11 @@
 {
-  "extends": ["airbnb-base", "prettier", "plugin:vue/vue3-essential"],
+  "extends": [
+    "plugin:vue/essential",
+    "@vue/airbnb",
+    "prettier",
+    "plugin:vue/vue3-recommended",
+    "@nuxtjs/eslint-config-typescript"
+  ],
   "plugins": ["prettier", "vue"],
   "rules": {
     "prettier/prettier": "error",
@@ -9,9 +15,9 @@
     "import/no-extraneous-dependencies": "off",
     "no-undef": "off",
     "vue/multi-word-component-names": "off",
-    "import/extensions": "off"
-  },
-  "parserOptions": {
-    "project": ["./tsconfig.json"]
+    "import/extensions": "off",
+    "no-param-reassign": "off",
+    "space-before-function-paren": "off",
+    "vue/singleline-html-element-content-newline": "off"
   }
 }

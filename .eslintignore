@@ -1,15 +1,10 @@
 dist
+public
 
 # ignore generate imports
 auto-imports.d.ts
 components.d.ts
 
+dist
 .output
 node_modules
-.nuxt
-vitest.config.ts
-tests
-README.md
-LICENSE.md
-package.json
-yarn.lock
