@@ -59,18 +59,18 @@ const SidebarItems = [
 <template>
   <div
     class="relative w-full h-full min-h-screen transition-all duration-500 ease-out rounded-r-lg bg-light-neutral dark:bg-dark-grey"
-    :class="[!collapsed ? 'max-w-[250px]' : 'max-w-[80px]']"
+    :class="[collapsed ? 'max-w-[80px]' : 'max-w-[250px]']"
   >
     <div class="flex h-6 mt-9">
       <h1
         class="absolute w-fit mx-auto left-0 right-0 text-3xl font-semibold transition-all duration-[0s]"
-        :class="[!collapsed ? 'opacity-100 delay-500' : 'opacity-0 delay-[0s]']"
+        :class="[collapsed ? 'opacity-0 delay-[0s]' : 'opacity-100 delay-500']"
       >
         Device Database
       </h1>
       <h1
         class="absolute w-fit left-0 right-0 mx-auto text-3xl font-semibold transition-all duration-[0s]"
-        :class="[!collapsed ? 'opacity-0 delay-500' : 'opacity-100 delay-[0s]']"
+        :class="[collapsed ? 'opacity-100 delay-[0s]' : 'opacity-0 delay-500']"
       >
         DDB
       </h1>
@@ -96,7 +96,7 @@ const SidebarItems = [
           />
           <div
             class="bottom-0 flex"
-            :class="[!collapsed ? 'ml-6' : 'w-full ml-3']"
+            :class="[collapsed ? 'w-full ml-3' : 'ml-6']"
           >
             <div class="my-auto" :class="[!collapsed ? '' : 'mx-auto']">
               <IconCategory v-if="item.icon == 'category'" />
@@ -107,23 +107,11 @@ const SidebarItems = [
               <IconActivity v-else-if="item.icon == 'activity'" />
               <IconNotification v-else-if="item.icon == 'notification'" />
             </div>
-            <!-- <div
-              class=""
-              :class="[
-                !collapsed
-                  ? 'opacity-100 ml-3 my-auto w-auto delay-500'
-                  : 'opacity-0 w-0 delay-[0s]',
-              ]"
-            >
-              <p class="text-xl leading-none">
-                {{ item.name }}
-              </p>
-            </div> -->
             <div
               :class="[
-                !collapsed
-                  ? 'opacity-100 ml-3 my-auto w-auto delay-500'
-                  : 'opacity-0 w-0 delay-[0s]',
+                collapsed
+                  ? 'opacity-0 w-0 delay-[0s]'
+                  : 'opacity-100 ml-3 my-auto w-auto delay-500',
               ]"
             >
               <p class="text-xl leading-none">
@@ -136,16 +124,16 @@ const SidebarItems = [
     </div>
     <div
       class="absolute flex w-full"
-      :class="[!collapsed ? 'bottom-6' : 'bottom-9']"
+      :class="[collapsed ? 'bottom-9' : 'bottom-6']"
     >
-      <div class="flex h-7" :class="[!collapsed ? 'px-5' : 'mx-auto']">
+      <div class="flex h-7" :class="[collapsed ? 'mx-auto' : 'px-5']">
         <div
           class="flex items-center w-full h-full"
-          :class="[!collapsed ? '' : 'flex-wrap']"
+          :class="[collapsed ? 'flex-wrap' : null]"
         >
           <div
             class="overflow-hidden rounded aspect-square h-7 w-7"
-            :class="[!collapsed ? 'mr-2' : 'mx-auto']"
+            :class="[collapsed ? 'mx-auto' : 'mr-2']"
           >
             <img
               src="https://picsum.photos/seed/1672221742004/300/300"
@@ -155,9 +143,9 @@ const SidebarItems = [
           <div
             class="mr-3 duration-[0s]"
             :class="[
-              !collapsed
-                ? 'scale-100 h-auto mr-3 delay-500'
-                : 'scale-0 h-0 delay-[0s]',
+              collapsed
+                ? 'scale-0 h-0 delay-[0s]'
+                : 'scale-100 h-auto mr-3 delay-500',
             ]"
           >
             <p class="leading-5">Lucas Gruber</p>
@@ -166,12 +154,10 @@ const SidebarItems = [
               @click="collapse = !collapse"
               @keyup.enter="collapse = !collapse"
             >
-              <!-- Azubi - 2LJ -->
-              {{ width }}
-              {{ collapsed }}
+              Azubi - 2LJ
             </p>
           </div>
-          <div :class="[!collapsed ? '' : 'mx-auto mt-4']">
+          <div :class="[collapsed ? 'mx-auto mt-4' : null]">
             <button type="button" @click="handleLogout">
               <IconLogout
                 class="w-4 h-4 fill-light-text dark:fill-dark-neutral"
