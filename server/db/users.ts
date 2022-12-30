@@ -1,8 +1,8 @@
 import { usePrisma } from '@sidebase/nuxt-prisma'
+import type { H3Event } from 'h3'
 import bcrypt from 'bcrypt'
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const createUser = (event: any, userData: any) => {
+export const createUser = (event: H3Event, userData: any) => {
   const prisma = usePrisma(event)
 
   const finalUserData = {
@@ -15,13 +15,13 @@ export const createUser = (event: any, userData: any) => {
   })
 }
 
-export const getAllUsers = (event: any) => {
+export const getAllUsers = (event: H3Event) => {
   const prisma = usePrisma(event)
 
   return prisma.user.findMany()
 }
 
-export const getUserByUsername = (event: any, username: any) => {
+export const getUserByUsername = (event: H3Event, username: any) => {
   const prisma = usePrisma(event)
 
   return prisma.user.findUnique({

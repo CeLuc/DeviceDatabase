@@ -1,7 +1,8 @@
 import { getUserByUsername } from '~/server/db/users'
 import { userTransformer } from '~/server/transformers/user'
+import type { H3Event } from 'h3'
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event: H3Event) => {
   const query = getQuery(event)
   const { username } = query
   const user = await getUserByUsername(event, username)

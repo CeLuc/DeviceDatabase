@@ -31,6 +31,7 @@ export default NuxtAuthHandler({
 
         if (res.ok && user) {
           return user
+          // eslint-disable-next-line no-else-return
         } else {
           return null
         }

@@ -1,9 +1,9 @@
+import type { H3Event } from 'h3'
 import { usePrisma } from '@sidebase/nuxt-prisma'
 
-const runtimeConfig = useRuntimeConfig()
 const startupTime = new Date()
 
-const handler = eventHandler(async (event) => {
+const handler = eventHandler(async (event: H3Event) => {
   const prisma = usePrisma(event)
   try {
     await prisma.$queryRaw`SELECT 1;`
@@ -18,7 +18,7 @@ const handler = eventHandler(async (event) => {
     status: 'healthy',
     time: new Date(),
     startupTime,
-    nuxtAppVersion: runtimeConfig.version || 'unknown',
+    nuxtAppVersion: useRuntimeConfig().version || 'unknown',
   }
 })
 

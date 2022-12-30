@@ -1,7 +1,8 @@
 import { createUser, getUserByUsername } from '~~/server/db/users'
 import { userTransformer } from '~~/server/transformers/user'
+import type { H3Event } from 'h3'
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event: H3Event) => {
   const body = await readBody(event)
   const passwdRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,}$/
