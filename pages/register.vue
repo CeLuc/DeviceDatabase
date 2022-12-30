@@ -1,3 +1,13 @@
+<script setup lang="ts">
+const colorMode = useColorMode()
+
+definePageMeta({
+  auth: false,
+  layout: false,
+  colorMode: 'system',
+})
+</script>
+
 <template>
   <div class="flex w-full h-screen bg-light-bg dark:bg-dark-bg">
     <div class="flex w-full xl:w-3/12 bg-light-neutral dark:bg-dark-grey">
@@ -26,13 +36,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const colorMode = useColorMode()
-
-definePageMeta({
-  auth: false,
-  layout: false,
-  colorMode: 'system',
-})
-</script>

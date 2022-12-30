@@ -1,3 +1,16 @@
+<script setup>
+defineProps({
+  height: {
+    type: Number,
+    default: 18,
+  },
+  width: {
+    type: Number,
+    default: 18,
+  },
+})
+</script>
+
 <template>
   <svg
     :class="[
@@ -16,16 +29,3 @@
     />
   </svg>
 </template>
-
-<script setup>
-defineProps({
-  height: {
-    type: Number,
-    default: 18,
-  },
-  width: {
-    type: Number,
-    default: 18,
-  },
-})
-</script>

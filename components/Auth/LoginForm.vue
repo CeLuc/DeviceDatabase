@@ -1,34 +1,3 @@
-<template>
-  <div @keyup.enter="signInHandler">
-    <div class="space-y-5">
-      <UIInput
-        label="Username"
-        placeholder="username"
-        :error="userError"
-        v-model="loginData.username"
-      />
-      <UIInput
-        label="Password"
-        placeholder="*********"
-        type="password"
-        :error="passwdError"
-        v-model="loginData.password"
-      />
-    </div>
-    <div class="mt-6">
-      <AuthSubmitButton @function="signInHandler" value="Log In" />
-    </div>
-    <div class="mt-5 text-center">
-      <NuxtLink
-        to="/register"
-        class="dark:text-dark-primary text-light-primary"
-      >
-        Or register a new account
-      </NuxtLink>
-    </div>
-  </div>
-</template>
-
 <script setup>
 const route = useRoute()
 const { signIn } = useSession()
@@ -41,7 +10,7 @@ const userError = useState()
 const passwdError = useState()
 
 const signInHandler = async () => {
-  const { error, url } = await signIn('credentials', {
+  const { error } = await signIn('credentials', {
     ...loginData,
     redirect: false,
   })
@@ -57,3 +26,34 @@ const signInHandler = async () => {
   }
 }
 </script>
+
+<template>
+  <div @keyup.enter="signInHandler">
+    <div class="space-y-5">
+      <UIInput
+        v-model="loginData.username"
+        label="Username"
+        placeholder="username"
+        :error="userError"
+      />
+      <UIInput
+        v-model="loginData.password"
+        label="Password"
+        placeholder="*********"
+        type="password"
+        :error="passwdError"
+      />
+    </div>
+    <div class="mt-6">
+      <AuthSubmitButton value="Log In" @function="signInHandler" />
+    </div>
+    <div class="mt-5 text-center">
+      <NuxtLink
+        to="/register"
+        class="dark:text-dark-primary text-light-primary"
+      >
+        Or register a new account
+      </NuxtLink>
+    </div>
+  </div>
+</template>
