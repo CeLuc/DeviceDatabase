@@ -17,7 +17,7 @@ export default defineEventHandler(async (event: H3Event) => {
     )
   }
 
-  const searchedUsername = await getUserByUsername(event, username)
+  const searchedUsername = await getUserByUsername(username)
 
   if (searchedUsername != null) {
     return sendError(
@@ -58,7 +58,7 @@ export default defineEventHandler(async (event: H3Event) => {
     settings,
   }
 
-  const user = await createUser(event, userData)
+  const user = await createUser(userData)
 
   return {
     body: userTransformer(user),

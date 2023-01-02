@@ -1,10 +1,7 @@
-import { usePrisma } from '@sidebase/nuxt-prisma'
-import type { H3Event } from 'h3'
 import bcrypt from 'bcrypt'
+import { prisma } from '.'
 
-export const createUser = (event: H3Event, userData: any) => {
-  const prisma = usePrisma(event)
-
+export const createUser = (userData: any) => {
   const finalUserData = {
     ...userData,
     password: bcrypt.hashSync(userData.password, 10),
@@ -15,18 +12,11 @@ export const createUser = (event: H3Event, userData: any) => {
   })
 }
 
-export const getAllUsers = (event: H3Event) => {
-  const prisma = usePrisma(event)
+export const getAllUsers = () => prisma.user.findMany()
 
-  return prisma.user.findMany()
-}
-
-export const getUserByUsername = (event: H3Event, username: any) => {
-  const prisma = usePrisma(event)
-
-  return prisma.user.findUnique({
+export const getUserByUsername = (username: any) =>
+  prisma.user.findUnique({
     where: {
       username,
     },
   })
-}

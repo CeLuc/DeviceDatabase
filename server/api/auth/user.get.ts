@@ -5,7 +5,7 @@ import type { H3Event } from 'h3'
 export default defineEventHandler(async (event: H3Event) => {
   const query = getQuery(event)
   const { username } = query
-  const user = await getUserByUsername(event, username)
+  const user = await getUserByUsername(username)
 
   if (user == null) {
     return sendError(

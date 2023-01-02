@@ -1,10 +1,8 @@
-import { usePrisma } from '@sidebase/nuxt-prisma'
+import { prisma } from '~/server/db'
 
 const config = useRuntimeConfig()
 
-export default defineEventHandler(async (event) => {
-  const prisma = usePrisma(event)
-
+export default defineEventHandler(async () => {
   const userRes = await fetch(`${config.originUrl}/api/auth/user`, {
     method: 'GET',
   })
@@ -15,7 +13,7 @@ export default defineEventHandler(async (event) => {
     idList.push(element.id)
   })
 
-  const test = await prisma.user.deleteMany({
+  const users = await prisma.user.deleteMany({
     where: {
       id: {
         in: idList,
@@ -23,5 +21,5 @@ export default defineEventHandler(async (event) => {
     },
   })
 
-  return { test }
+  return { users }
 })

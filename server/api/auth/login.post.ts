@@ -15,7 +15,7 @@ export default defineEventHandler(async (event: H3Event) => {
     )
   }
 
-  const user = await getUserByUsername(event, username)
+  const user = await getUserByUsername(username)
   if (user == null) {
     return sendError(
       event,
