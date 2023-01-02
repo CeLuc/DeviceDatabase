@@ -2,7 +2,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     version: '0.0.1',
     databaseUrl: process.env.DATABASE_URL,
-    originUrl: process.env.ORIGIN_URL,
   },
   modules: [
     '@nuxtjs/tailwindcss',
@@ -12,11 +11,10 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
   ],
-  extends: ['@sidebase/core', '@sidebase/nuxt-prisma'],
+  extends: ['@sidebase/core'],
 
   auth: {
     isEnabled: true,
-    origin: process.env.ORIGIN_URL,
 
     enableGlobalAppMiddleware: true,
   },
