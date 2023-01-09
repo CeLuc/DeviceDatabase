@@ -1,6 +1,4 @@
-<script setup lang="ts">
-const colorMode = useColorMode()
-
+<script setup>
 definePageMeta({
   auth: false,
   layout: false,
