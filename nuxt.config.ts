@@ -10,6 +10,8 @@ export default defineNuxtConfig({
     '@sidebase/nuxt-auth',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
+    '@nuxtjs/device',
+    '@formkit/nuxt',
   ],
   extends: ['@sidebase/core'],
 
