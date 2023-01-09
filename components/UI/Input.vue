@@ -19,9 +19,11 @@ defineProps({
   },
   error: {
     type: String,
+    default: null,
   },
   height: {
     type: Number,
+    default: null,
   },
 })
 </script>
@@ -35,13 +37,12 @@ defineProps({
       <input
         :id="label"
         :type="type"
-        v-bind="field"
         class="w-full pl-3 border-0 rounded-md focus:ring-0 focus:outline-none text-light-text dark:text-dark-neutral dark:placeholder:text-dark-neutral/70 dark:bg-dark-bg bg-light-bg placeholder:text-light-text/70"
         :placeholder="placeholder"
         :value="modelValue"
         :class="[
           error != null
-            ? 'border border-light-secondary dark:border-dark-secondary'
+            ? 'formkit-invalid:border formkit-invalid:border-light-secondary formkit-invalid:dark:border-dark-secondary'
             : '',
           height != null ? 'h-' + height : 'h-8',
         ]"
