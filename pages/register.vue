@@ -1,6 +1,4 @@
-<script setup lang="ts">
-const colorMode = useColorMode()
-
+<script setup>
 definePageMeta({
   auth: false,
   layout: false,
@@ -31,7 +29,7 @@ definePageMeta({
     </div>
 
     <div class="items-center justify-center hidden w-9/12 xl:flex">
-      <IllustrationsRegisterLight v-if="colorMode.value == 'light'" />
+      <IllustrationsRegisterLight v-if="$colorMode.value == 'light'" />
       <IllustrationsRegisterDark v-else />
     </div>
   </div>
