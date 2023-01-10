@@ -11,14 +11,9 @@ const signInHandler = async () => {
     redirect: false,
   })
   if (error) {
-    // Do your custom error handling here
     formErrors.value = ['Username or Password is invalid']
-    // userError.value = 'Username or Password is invalid'
-    // passwdError.value = 'Username or Password is invalid'
     formData.value.password = null
   } else {
-    // No error, continue with the sign in, e.g., by following the returned redirect:
-    // alert(callbackUrl)
     navigateTo(callbackUrl || '/', { external: true })
   }
 }

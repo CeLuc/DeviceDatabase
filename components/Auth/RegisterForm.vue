@@ -10,8 +10,6 @@ const formData = ref({
 })
 const formErrors = ref([])
 
-console.log(formData.value)
-
 const signUpHandler = async () => {
   // build payload
   const {
