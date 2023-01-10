@@ -60,7 +60,5 @@ export default defineEventHandler(async (event: H3Event) => {
 
   const user = await createUser(userData)
 
-  return {
-    body: userTransformer(user),
-  }
+  return userTransformer(user)
 })

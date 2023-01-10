@@ -37,7 +37,5 @@ export default defineEventHandler(async (event: H3Event) => {
     )
   }
 
-  return {
-    body: userTransformer(user),
-  }
+  return userTransformer(user)
 })
