@@ -1,8 +1,6 @@
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { NuxtAuthHandler } from '#auth'
 
-const config = useRuntimeConfig()
-
 export default NuxtAuthHandler({
   secret: 'your-secret-here',
   pages: {
@@ -20,16 +18,16 @@ export default NuxtAuthHandler({
           password: credentials.password,
         }
 
-        const res = await fetch(`${config.originUrl}/api/auth/login`, {
+        const res = await $fetch('/api/auth/login', {
           method: 'POST',
           body: JSON.stringify(payload),
           headers: {
             'Content-Type': 'application/json',
           },
         })
-        const user = await res.json()
+        const user = await res
 
-        if (res.ok && user) {
+        if (user) {
           return user
           // eslint-disable-next-line no-else-return
         } else {
